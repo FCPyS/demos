@@ -4,6 +4,10 @@ project:
 
 website:
   title: "DEMOS"
+  site-url: https://fcpys.github.io/demos/
+  repo-url: https://github.com/FCPyS/demos
+  repo-branch: main
+  repo-actions: [edit, issue]
   navbar:
     background: "#95391C"
     foreground: "#FFFCE4"
@@ -18,14 +22,6 @@ website:
       - text: "Cuestionario"
         file: cuestion.qmd 
 
-  sidebar:
-    tools:
-      - icon: github
-        menu:
-          - text: Código
-            url:  https://code.com
-          - text: Report a Bug
-            url:  https://bugs.com
    
   page-footer: 
     left: "Sitio web del Proyecto PAPIME PE303423 Recursos didácticos para la enseñanza de la Sociodemografía"
