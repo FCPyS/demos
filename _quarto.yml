@@ -1,0 +1,41 @@
+project:
+  type: website
+
+website:
+  title: "DEMOS"
+  navbar:
+    background: "#95391C"
+    foreground: "#FFFCE4"
+    search: true
+    left:
+      - text: "Inicio"
+        file: index.qmd
+      - text: "Sobre el proyecto"
+        file: about.qmd 
+      - text: "¿Quienes somos?"
+        file: quienes.qmd 
+      - text: "Cuestionario"
+        file: cuestion.qmd 
+
+  sidebar:
+    tools:
+      - icon: github
+        menu:
+          - text: Código
+            url:  https://code.com
+          - text: Report a Bug
+            url:  https://bugs.com
+   
+  page-footer: 
+    left: "Sitio web del Proyecto PAPIME PE303423 Recursos didácticos para la enseñanza de la Sociodemografía"
+    right: "con apoyo DGAPA-UNAM"
+
+format:
+  html:
+    theme:  journal
+    css: styles.css
+    toc: true
+    fontcolor: "#95391C"
+
+editor: visual
+

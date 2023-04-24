@@ -1,0 +1,17 @@
+![](ima/header.png){fig-align="center" width="400"}
+
+---
+title: "De qué vamos"
+---
+
+## Objetivos
+
+El presente proyecto busca ampliar las estrategias práctico-didácticas para la enseñanza de la Sociodemografía en la Facultad de Ciencias Políticas y Sociales a partir de la creación de recursos didácticos en línea, el acercamiento del estudiantado con quienes desarrollan las investigaciones y la exploración de fuentes de información mexicana de reciente publicación.
+
+Ello implica, ampliar --por un lado-- las estrategias que tienen que ver recursos orientados a la aplicación de las técnicas propias del análisis sociodemográfico; así como recursos que amplíen el análisis de los problemas sociales en México desde una perspectiva demográfica.
+
+## ¿Qué haremos?
+
+Por ello se propone la **creación de espacios de discusión de los problemas demográficos** y sociales como **podcasts y conversatorios** con la participación de académicos y estudiantes.
+
+Así como la escritura de un **libro digital** que actualice los temas que han sido objeto de la demografía social en los últimos años y **este sitio web** que sistematizará los materiales prácticos y bibliografía que realicemos durante 2023.
