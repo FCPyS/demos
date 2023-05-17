@@ -67,6 +67,13 @@
     "href": "talleres.html#demostallerendiseg2021",
     "title": "talleres",
     "section": "demos::taller(“ENDISEG2021”)",
-    "text": "demos::taller(“ENDISEG2021”)\n ## demos::taller(“ENDIREH2021”)"
+    "text": "demos::taller(“ENDISEG2021”)"
+  },
+  {
+    "objectID": "talleres.html#demostallerendireh2021",
+    "href": "talleres.html#demostallerendireh2021",
+    "title": "talleres",
+    "section": "demos::taller(“ENDIREH2021”)",
+    "text": "demos::taller(“ENDIREH2021”)"
   }
 ]
