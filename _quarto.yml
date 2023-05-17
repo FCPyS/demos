@@ -19,6 +19,8 @@ website:
         file: about.qmd 
       - text: "¿Quienes somos?"
         file: quienes.qmd 
+      - text: "Talleres"
+        file: talleres.qmd 
       - text: "Cuestionario"
         file: cuestion.qmd 
 
