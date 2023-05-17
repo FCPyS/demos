@@ -59,14 +59,14 @@
     "objectID": "talleres.html#demostallercacenso2020",
     "href": "talleres.html#demostallercacenso2020",
     "title": "talleres",
-    "section": "demos::taller(\"CACENSO2020)",
-    "text": "demos::taller(\"CACENSO2020)"
+    "section": "demos::taller(“CACENSO2020)",
+    "text": "demos::taller(“CACENSO2020)"
   },
   {
     "objectID": "talleres.html#demostallerendiseg2021",
     "href": "talleres.html#demostallerendiseg2021",
     "title": "talleres",
-    "section": "demos::taller(\"ENDISEG2021\")",
-    "text": "demos::taller(\"ENDISEG2021\")\n ## demos::taller(\"ENDIREH2021\")"
+    "section": "demos::taller(“ENDISEG2021”)",
+    "text": "demos::taller(“ENDISEG2021”)\n ## demos::taller(“ENDIREH2021”)"
   }
 ]
