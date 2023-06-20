@@ -1,8 +1,8 @@
 ---
-title: "talleres"
+title: "Talleres"
 ---
 
-En coordinación con el capítulo de las R-Ladies CDMX, en el mes de junio se impartirán tres talleres sobre uso de información demográfica... Pronto abrimos inscripción.
+En coordinación con el capítulo de las R-Ladies CDMX, en el mes de junio se impartirán tres talleres sobre uso de información demográfica... 
 
 
 ## demos::taller("CACENSO2020)
@@ -10,9 +10,9 @@ En coordinación con el capítulo de las R-Ladies CDMX, en el mes de junio se im
 ![](ima/2.png){fig-align="center" width="500"}
 
 ## demos::taller("ENDISEG2021")
+
 ![](ima/1.png){fig-align="center" width="500"}
 
 ## demos::taller("ENDIREH2021")
-
 
 ![](ima/3.png){fig-align="center" width="500"}

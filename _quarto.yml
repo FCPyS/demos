@@ -19,11 +19,17 @@ website:
         file: about.qmd 
       - text: "¿Quienes somos?"
         file: quienes.qmd 
-      - text: "Talleres"
-        file: talleres.qmd 
       - text: "Cuestionario"
         file: cuestion.qmd 
 
+  sidebar:
+    style: "floating"
+    search: true
+    contents:
+      - section: "Talleres"
+        contents:
+          - talleres.qmd
+          - t1_cacenso.qmd
    
   page-footer: 
     left: "Sitio web del Proyecto PAPIME PE303423 Recursos didácticos para la enseñanza de la Sociodemografía"
