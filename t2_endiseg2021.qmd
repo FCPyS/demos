@@ -25,7 +25,7 @@ pacman::p_load(tidyverse,
                sjlabelled) #carga los paquetes necesarios 
 ```
 
-En esta práctica trabajaremos con los datos abiertos. 
+En esta práctica trabajaremos con los datos abiertos.
 
 ¿Qué son datos abiertos?
 
@@ -35,29 +35,26 @@ En esta práctica trabajaremos con los datos abiertos.
 
 De acuerdo a la información en los datos abiertos, hay cinco conjuntos de datos, uno a nivel vivienda y tres a nivel individuo:
 
-* Vivienda: tviv
+-   Vivienda: tviv
 
-* Individual: tsdem
+-   Individual: tsdem
 
-* Individual - persona elegida: tapart_a
+-   Individual - persona elegida: tapart_a
 
-* Individual - persona elegida: tapart_b
+-   Individual - persona elegida: tapart_b
 
-* Individual - persona elegida: tmodulo
-
+-   Individual - persona elegida: tmodulo
 
 Además esta base no tiene una sólo variable del id. Tiene un *identificador compuesto*. Podemos hacer un objeto tipo vector
+
 ```{r}
 idviv<-c("folio", "viv_sel")
 idper<-c("folio", "viv_sel", "hogar", "n_ren")
 ```
 
-
-
 ## Importación de los datos
 
-Aprovechamos y agregaremos un paso para limpiar los nombres con `janitor::clean_names()` utiliza el formato *snakecase*, quitará espacios y les pondra guión bajo, las mayúsculas se vuelven minúsculas y quita caracteres especiales. 
-
+Aprovechamos y agregaremos un paso para limpiar los nombres con `janitor::clean_names()` utiliza el formato *snakecase*, quitará espacios y les pondra guión bajo, las mayúsculas se vuelven minúsculas y quita caracteres especiales.
 
 ```{r}
 
@@ -75,11 +72,9 @@ tapart_b <- readr::read_csv("data_t2/conjunto_de_datos_endiseg_2021_csv/conjunto
 
 ```
 
-
-## Fusionado uno a uno con diferentes conjuntos. 
+## Fusionado uno a uno con diferentes conjuntos.
 
 Me gusta empezar con el modulo que tiene más casos y este sería mi "left" o conjunto "x"
-
 
 ```{r}
 endiseg2021<-tsdem %>% 
@@ -90,7 +85,6 @@ endiseg2021<-tsdem %>%
 
 Si checas me quedo con las variables repetidas que están en la izquierda, porque es mi conjunto más completo.
 
-
 Hacemos lo mismo con tapart_a:
 
 ```{r}
@@ -99,8 +93,6 @@ endiseg2021<-endiseg2021 %>%
   dplyr::select(-ends_with(".y")) %>% # quita todas las variables que terminan en .x
   dplyr::rename_with(~ stringr::str_remove(.x,  pattern = ".x"),  ends_with(".x")) 
 ```
-
-
 
 Hacemos lo mismo con el tapart_b
 
@@ -112,7 +104,6 @@ endiseg2021<-endiseg2021 %>%
 ```
 
 Y hoy agregamos la vivienda. Como para tener la lógica del cuestionario en nuestro dataframe, lo pondre como left:
-
 
 ```{r}
 endiseg2021<-tvivienda %>% 
@@ -158,7 +149,6 @@ dicc_tmodulo %>%
 
 Vamos a guardar esto
 
-
 ```{r}
 dicc_tmodulo %>% 
   filter(nemonico=="p7_1") %>% 
@@ -173,10 +163,10 @@ endiseg2021 %<>%
 ```
 
 Revisamos que tengamos el atributo
+
 ```{r}
 glimpse(endiseg2021$p7_1)
 ```
-
 
 ### Catalogos de valores
 
@@ -194,13 +184,13 @@ endiseg2021 %<>%
   mutate(p7_1=sjlabelled::set_labels(p7_1, labels = labels_p7_1$descrip))
 ```
 
-
 Revisamos que tengamos el atributo
+
 ```{r}
 glimpse(endiseg2021$p7_1)
 ```
 
-## Tabulados 
+## Tabulados
 
 ### Tabulados con {janitor}
 
@@ -217,7 +207,6 @@ endiseg2021 %>%
 
 Vamos a utilizar una segunda variable
 
-
 ```{r}
 dicc_tmodulo %>% 
   filter(nemonico=="p8_1") %>% 
@@ -227,15 +216,12 @@ endiseg2021 %<>%
   mutate(p8_1=sjlabelled::set_label(p8_1, label=label_p8_1$nombre_campo))
 ```
 
-
 ```{r}
 labels_p8_1 <- read_csv("data_t2/conjunto_de_datos_endiseg_2021_csv/conjunto_de_datos_tmodulo_endiseg_2021/catalogos/p8_1.csv", locale = locale(encoding = "latin1")) %>% clean_names()
 
 endiseg2021 %<>% 
   mutate(p8_1=sjlabelled::set_labels(p8_1, labels = labels_p8_1$descrip))
 ```
-
-
 
 ```{r}
 endiseg2021 %>% 
@@ -248,11 +234,9 @@ endiseg2021 %>%
   janitor::adorn_pct_formatting(digits=2)
 ```
 
-
 ### Tabulados con {pollster}
 
 Podemos incluir el factor de expansión
-
 
 ```{r}
 endiseg2021 %>% 
@@ -260,6 +244,7 @@ endiseg2021 %>%
   mutate(p7_1=as_label(p7_1)) %>% 
   pollster::topline(p7_1, weight = factor) 
 ```
+
 ```{r}
 endiseg2021 %>% 
   filter(seleccionade==1) %>% 
@@ -267,10 +252,7 @@ endiseg2021 %>%
   pollster::moe_topline(p7_1, weight = factor) # margin of error
 ```
 
-
 Doble entrada
-
-
 
 ```{r}
 endiseg2021 %>% 
@@ -280,7 +262,6 @@ endiseg2021 %>%
   pollster::crosstab(p8_1, p7_1, weight = factor, pct_type = "col") 
 ```
 
-
 ```{r}
 endiseg2021 %>% 
   filter(seleccionade==1) %>% 
@@ -288,7 +269,6 @@ endiseg2021 %>%
   mutate(p8_1=as_label(p8_1)) %>% 
   pollster::moe_crosstab(p8_1, p7_1, weight = factor) 
 ```
-
 
 ## Diseño muestral
 
@@ -334,11 +314,10 @@ endiseg_svyr %>%
 
 ```
 
-
 ```{r}
 endiseg_svyr %>%
   filter(seleccionade==1) %>% 
   mutate(p8_1=as_label(p8_1)) %>% 
   group_by(p8_1) %>% #variables cuali
-  summarize(proportion = survey_mean())
+  summarise(proportion = survey_mean())
 ```

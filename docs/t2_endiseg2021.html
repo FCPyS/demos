@@ -201,6 +201,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <a href="./t1_cacenso.html" class="sidebar-item-text sidebar-link">T1: Cuestionario Ampliado</a>
   </div>
 </li>
+          <li class="sidebar-item">
+  t2_endiseg.qmd
+  </li>
       </ul>
   </li>
     </ul>
@@ -406,8 +409,8 @@ dbl (45): HOGAR, P6_7_01, P6_7_02, P6_7_03, P6_7_04, P6_7_05, P6_7_06, P6_7_...
 <span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="fu">gc</span>() <span class="co"># limpiamos la memoria</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>           used  (Mb) gc trigger  (Mb) limit (Mb)  max used  (Mb)
-Ncells  2361884 126.2    4520175 241.5         NA   4520175 241.5
-Vcells 55398134 422.7  122965277 938.2      16384 122848655 937.3</code></pre>
+Ncells  2361966 126.2    4520117 241.5         NA   4520117 241.5
+Vcells 55398091 422.7  122965226 938.2      16384 122848612 937.3</code></pre>
 </div>
 </div>
 </section>
@@ -704,18 +707,17 @@ dbl (1): cve
 <span id="cb59-2"><a href="#cb59-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(seleccionade<span class="sc">==</span><span class="dv">1</span>) <span class="sc">%&gt;%</span> </span>
 <span id="cb59-3"><a href="#cb59-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">p8_1=</span><span class="fu">as_label</span>(p8_1)) <span class="sc">%&gt;%</span> </span>
 <span id="cb59-4"><a href="#cb59-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(p8_1) <span class="sc">%&gt;%</span> <span class="co">#variables cuali</span></span>
-<span id="cb59-5"><a href="#cb59-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">proportion =</span> <span class="fu">survey_mean</span>(), <span class="co"># proporción</span></span>
-<span id="cb59-6"><a href="#cb59-6" aria-hidden="true" tabindex="-1"></a>            <span class="at">total =</span> <span class="fu">survey_total</span>() ) <span class="co"># totales</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb59-5"><a href="#cb59-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">proportion =</span> <span class="fu">survey_mean</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 6 × 5
-  p8_1                                  proportion proportion_se  total total_se
-  &lt;fct&gt;                                      &lt;dbl&gt;         &lt;dbl&gt;  &lt;dbl&gt;    &lt;dbl&gt;
-1 Una mujer a la que le gustan solamen…    0.00502      0.000425 1.85e5   15655.
-2 Un hombre al que le gustan solamente…    0.0138       0.000679 5.08e5   25052.
-3 Una persona que le gustan tanto homb…    0.0231       0.000924 8.50e5   34237.
-4 Una mujer que le gustan solamente lo…    0.523        0.00323  1.92e7  159225.
-5 Un hombre que le gustan solamente la…    0.433        0.00321  1.59e7  147567.
-6 Con otra orientación                     0.00218      0.000275 8.01e4   10121.</code></pre>
+<pre><code># A tibble: 6 × 3
+  p8_1                                                 proportion proportion_se
+  &lt;fct&gt;                                                     &lt;dbl&gt;         &lt;dbl&gt;
+1 Una mujer a la que le gustan solamente las mujeres      0.00502      0.000425
+2 Un hombre al que le gustan solamente los hombres        0.0138       0.000679
+3 Una persona que le gustan tanto hombres como mujeres    0.0231       0.000924
+4 Una mujer que le gustan solamente los hombres           0.523        0.00323 
+5 Un hombre que le gustan solamente las mujeres           0.433        0.00321 
+6 Con otra orientación                                    0.00218      0.000275</code></pre>
 </div>
 </div>
 
