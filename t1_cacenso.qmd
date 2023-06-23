@@ -6,17 +6,15 @@ title: "T1: Cuestionario Ampliado"
 
 ### Introducción
 
-Aquí dejo la presentación 
-
+Aquí dejo la presentación
 
 <iframe src="./01_ppt2023.pdf" title="Taller 1" width="600" height="400">
 
 </iframe>
 
-
 ### Descarga el proyecto desde acá
 
-En esta liga puedes descarga el proyecto de trabajo. De esta manera no tendremos problemas con las rutas relativas. 
+En esta liga puedes descarga el proyecto de trabajo. De esta manera no tendremos problemas con las rutas relativas.
 
 <https://tinyurl.com/demos-talleres>
 
@@ -33,17 +31,15 @@ pacman::p_load(tidyverse,
 
 ## Importación de datos
 
-Recuerdo que se debe revisar la documentación 
+Recuerdo que se debe revisar la documentación
 
-https://www.inegi.org.mx/programas/ccpv/2020/#Microdatos 
-
+https://www.inegi.org.mx/programas/ccpv/2020/#Microdatos
 
 ### Desde .csv
 
 Los archivos ".csv" son archivos separados por comas. Los podemos abrir con un bloc de notas para revisar
 
 Hay dos comandos que nos permiten importar archivos de texto, el de base `read.csv()` y `readr::read_csv()`
-
 
 ```{r}
 viviendas01 <- read.csv("data_t1/Viviendas01.CSV")
@@ -58,13 +54,13 @@ head(viviendas01)
 
 ```
 
-
 ```{r}
 viviendas01 <- read_csv("data_t1/Viviendas01.CSV")
 
 names(viviendas01)
 head(viviendas01)
 ```
+
 ### Desde SAS
 
 ```{r}
@@ -74,13 +70,13 @@ names(viviendas01)
 head(viviendas01)
 ```
 
-### Desde .dta 
+### Desde .dta
+
 ```{r}
 viviendas01 <- haven::read_dta("data_t1/Viviendas01.dta")
 ```
 
 ### Desde .sav
-
 
 ```{r}
 viviendas01 <- haven::read_sav("data_t1/Viviendas01.sav")
@@ -102,9 +98,7 @@ dim(viviendas01)
 dim(personas01)
 ```
 
-
 Con el INEGI no hay problema, pero bien vale revisar los id sean únicos:
-
 
 ```{r}
 viviendas01 %>% 
@@ -116,13 +110,9 @@ personas01 %>%
 
 ```
 
-
-
-
 ### Con `merge()`
 
 #### Casos en ambas bases
-
 
 Por *default*, el comando tiene activado la opción "all = FALSE", que nos deja los datos de ambas bases comunes. (tipo una intersección)
 
@@ -137,7 +127,6 @@ dim(cacenso01)
 ```{r}
 names(cacenso01)
 ```
-
 
 #### Todos los casos
 
@@ -189,7 +178,6 @@ dim(cacenso01)
 
 ```
 
-
 El caso 2:
 
 ```{r}
@@ -199,7 +187,6 @@ cacenso01<-dplyr::full_join(viviendas01,
 dim(cacenso01)
 
 ```
-
 
 El caso 3:
 
@@ -230,7 +217,6 @@ cacenso01<-viviendas01 %>% # pongo el conjunto que será la "izquierda
 dim(cacenso01)
 ```
 
-
 ## Agregar casos
 
 Supongamos que queremos pegar la información de viviendas de Aguascalientes y Tlaxcala
@@ -239,9 +225,7 @@ Supongamos que queremos pegar la información de viviendas de Aguascalientes y T
 viviendas29 <- read_sav("data_t1/Viviendas29.SAV")
 ```
 
-
 ### Con `rbind()`
-
 
 ```{r}
 viviendas01_29<-rbind(viviendas01, viviendas29)
@@ -252,14 +236,8 @@ table(viviendas01_29$ENT)
 
 ```
 
-
 ### Con `dplyr::bind_rows`
 
 ```{r}
 viviendas01_29<-dplyr::bind_rows(viviendas01, viviendas29)
 ```
-
-
-
-
-

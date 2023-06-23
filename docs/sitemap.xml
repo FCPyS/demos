@@ -2,26 +2,30 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://fcpys.github.io/demos/quienes.html</loc>
-    <lastmod>2023-06-20T05:10:45.667Z</lastmod>
+    <lastmod>2023-06-23T03:51:25.308Z</lastmod>
+  </url>
+  <url>
+    <loc>https://fcpys.github.io/demos/t2_endiseg2021.html</loc>
+    <lastmod>2023-06-23T03:54:52.643Z</lastmod>
   </url>
   <url>
     <loc>https://fcpys.github.io/demos/t1_cacenso.html</loc>
-    <lastmod>2023-06-20T05:11:03.216Z</lastmod>
+    <lastmod>2023-06-23T03:55:09.020Z</lastmod>
   </url>
   <url>
     <loc>https://fcpys.github.io/demos/index.html</loc>
-    <lastmod>2023-06-20T05:11:03.525Z</lastmod>
+    <lastmod>2023-06-23T03:55:09.306Z</lastmod>
   </url>
   <url>
     <loc>https://fcpys.github.io/demos/about.html</loc>
-    <lastmod>2023-06-20T05:11:03.827Z</lastmod>
+    <lastmod>2023-06-23T03:55:09.595Z</lastmod>
   </url>
   <url>
     <loc>https://fcpys.github.io/demos/talleres.html</loc>
-    <lastmod>2023-06-20T05:11:04.112Z</lastmod>
+    <lastmod>2023-06-23T03:55:10.293Z</lastmod>
   </url>
   <url>
     <loc>https://fcpys.github.io/demos/cuestion.html</loc>
-    <lastmod>2023-06-20T05:11:04.391Z</lastmod>
+    <lastmod>2023-06-23T03:55:10.568Z</lastmod>
   </url>
 </urlset>
