@@ -1,0 +1,456 @@
+---
+title: "T3: ENDIREH 2021"
+---
+
+## Previo
+
+### Descarga el proyecto desde acá
+
+En esta liga puedes descarga el proyecto de trabajo. De esta manera no tendremos problemas con las rutas relativas.
+
+<https://tinyurl.com/demos-talleres>
+
+### Paquetes
+
+```{r}
+if (!require("pacman")) install.packages("pacman") # instala pacman si se requiere
+pacman::p_load(tidyverse,
+               skimr,
+               haven, 
+               readr,
+               foreign,
+               janitor,
+               magrittr,
+               pollster,
+               srvyr,
+               sjlabelled) #carga los paquetes necesarios 
+```
+
+En esta práctica trabajaremos de nuevo con los datos abiertos.
+
+¿Qué son datos abiertos?
+
+<https://publications.iadb.org/publications/spanish/viewer/Los-datos-abiertos-en-América-Latina-y-el-Caribe.pdf>
+
+## Introducción a la fuente
+
+De acuerdo a la información en los datos abiertos, hay *28* conjuntos de datos, uno a nivel vivienda y el resto a nivel individuo:
+
+-   Vivienda: tviv
+
+-   Individual: tsdem - toda la población
+
+-   Individual - persona elegida: desde la sección III
+
+Es muy raro que analicemos TODA la base de datos. Trabajaremos con el fusionado de vivienda, demográfico, sección III y sección de violencia en al ámbito laboral.
+
+Pero... vamos a automatizar el proceso. Para eso primero repasemos sobre funciones y bucles
+
+## Mi primera función
+
+Unos de los elementos más poderosos de R es hacer nuestra propias funciones.
+
+La lógica de las funciones es la siguiente:
+
+```         
+nombre_de_funcion(argumento1, argumento2, ...) {
+  operaciones
+  salida
+}
+```
+
+Para ello haremos una función sencilla. Para sumarle un valor un 1
+
+```{r}
+mi_funcion<-function(x) {
+    resultado<-x+1
+    return(resultado)
+}
+
+mi_funcion(5)
+```
+
+Vamos a agregar un argumento, podemos agregar un segundo número en lugar de 1
+
+```{r}
+mi_funcion<-function(x, a) {
+    resultado<-x+a
+    return(resultado)
+}
+
+mi_funcion(x=5, a=6)
+```
+
+Los argumentos no necesariamente deben ser un sólo valor
+
+```{r}
+mi_funcion(x=1:5, a=6:10)
+```
+
+## Bucles
+
+### `for()`
+
+Supongamos que quisiéramos repetir una operación a lo largo de una secuencia, se puede realizar
+
+```         
+for (i in secuencia) {
+  operación 1
+  operación 2
+  ...
+  operación final
+}
+```
+
+```{r}
+for(i in 1:10) {
+  print(i+1)
+}
+
+
+for(j in c("Hugo", "Paco", "Luis")) {
+  
+  x<-paste("hola",j, sep=" ")
+  print(x)
+}
+```
+
+## Importación de los datos
+
+La estructura de archivos es muy consistente en los datos abiertos. Vamos a utilizar además una función llamada "paste()" que ayuda a pegar cadenas, que la había mostrado arriba
+
+```{r}
+
+a<-"Hola"
+
+b<-"¿Cómo estás?"
+
+paste(a, b, sep=" ") 
+```
+
+Esto será muy útil para crear nuestra función
+
+Por ejemplo revisemos la liga para importar los datos de la tabla "TVIV"
+
+```{r}
+TVIV <- read_csv("data_t3/conjunto_de_datos_endireh_2021_csv/conjunto_de_datos_TVIV/conjunto_de_datos/conjunto_de_datos_TVIV.csv")
+
+```
+
+Hay dos espacios donde va el nombre de la tabla
+
+```{r}
+cd0 <- "data_t3/conjunto_de_datos_endireh_2021_csv/conjunto_de_datos_"
+cd1 <- "/conjunto_de_datos/conjunto_de_datos_"
+
+```
+
+Ejemplo de cómo funciona `paste()` y `paste0()`
+
+```{r}
+paste0(cd0,"TVIV", cd1, "TVIV", ".csv")
+
+```
+
+Podemos crear una función de importación:
+
+```{r}
+importar <- function(tabla){
+
+  path <- paste0(cd0,tabla, cd1,tabla, ".csv")
+  
+  x<-readr::read_csv(path, locale = locale(encoding = "latin1"))
+  
+  return(x)
+}
+```
+
+```{r}
+TVIV<-importar("TVIV")
+```
+
+Ojo esta función también depende de cd0 y cd1, por lo que habría que declararlo antes. O bien, incluye los objetos dentro de la función, como lo hicimos con path. Nota que ese objeto no está en nuestro ambiente.
+
+Vamos a usar el el índice de las tablas para importar todas con un loop
+
+```{r}
+indice_tablas <- read_csv("data_t3/conjunto_de_datos_endireh_2021_csv/0_indice_tablas_ENDIREH_2021.csv",locale = locale(encoding = "latin1"), skip = 1) %>%
+  clean_names()
+
+```
+
+Revisemos este índice
+
+```{r}
+head(indice_tablas)
+indice_tablas %<>%
+  mutate(nombre_de_archivo=stringr::str_remove_all(nombre_de_archivo, "conjunto_de_datos_"))
+head(indice_tablas)
+```
+
+Vamos a importar todos los conjuntos!
+
+Creamos un vector con las tablas que queremos importar:
+
+```{r}
+tablas<-indice_tablas$nombre_de_archivo[c(1:4, 9)]
+
+```
+
+Si le quitas lo que hay entre corchetes, tendrías los 28 conjuntos de datos.
+
+```{r}
+
+for(i in tablas) {
+  
+  y<-importar(i) # se importa la base
+  assign(paste(i), y) # asigna el nombre al objeto y
+}
+
+
+```
+
+Piensa que podríamos tener más argumentos como: el nombre de la base, la carpeta, etc.
+
+## Importación de los diccionarios
+
+Los diccionarios tienen una estructura parecida. Reformulemos nuestros directorios para hacer una función más general
+
+```{r}
+cd2 <- "data_t3/conjunto_de_datos_endireh_2021_csv/conjunto_de_datos_"
+```
+
+```{r}
+importar2 <-function(tabla, elemento) {
+  
+  dir<-paste0(cd2,tabla,"/",elemento,"/",elemento, "_",tabla, ".csv")
+  
+  x<-readr::read_csv(paste0(dir), locale = locale(encoding = "latin1"))
+  
+  return(x)
+}
+```
+
+```{r}
+TB_SEC_III<-importar2(tabla="TB_SEC_III",
+                     elemento="conjunto_de_datos")
+
+DIC_TB_SEC_III<-importar2(tabla="TB_SEC_III",
+                     elemento="diccionario_de_datos") 
+
+```
+
+### Loop para importar diccionarios
+
+Creamos un vector con las tablas que queremos importar:
+
+```{r}
+tablas<-indice_tablas$nombre_de_archivo[c(1:4, 9)]
+
+```
+
+```{r}
+
+for(i in tablas) {
+  
+  y<-importar2(tabla=i, 
+               elemento="diccionario_de_datos") # se importa la base
+
+  assign(paste0("DICC_",i), y) # asigna el nombre al objeto y
+}
+
+
+```
+
+Cuidado con estos diccionarios. Hay varios instrumentos entonces se repiten.
+
+```{r}
+for(i in tablas) {
+  
+  y<-importar2(tabla=i, 
+               elemento="diccionario_de_datos") %>% # se importa la base
+    select(NOMBRE_CAMPO:TIPO) %>% 
+    unique()
+
+  assign(paste0("DICC_",i), y) # asigna el nombre al objeto y
+}
+```
+
+### Etiquetado en bucle de variables
+
+Hoy vamos a etiquetar las variables con un bucle.
+
+Aquí solo lo he podido resolver con base
+
+```{r}
+DICC_TB_SEC_III$NEMONICO
+
+TB_SEC_III[["ID_VIV"]] %>% head()
+
+DICC_TB_SEC_III[DICC_TB_SEC_III$NEMONICO=="ID_VIV",]$NOMBRE_CAMPO
+```
+
+```{r}
+
+for (i in DICC_TB_SEC_III$NEMONICO) {
+  
+  TB_SEC_III[[i]]<-sjlabelled::set_label(TB_SEC_III[[i]], label=DICC_TB_SEC_III[DICC_TB_SEC_III$NEMONICO==i,]$NOMBRE_CAMPO)
+  
+}
+
+```
+
+```{r}
+
+for (i in DICC_TB_SEC_IV$NEMONICO) {
+  
+  TB_SEC_IV[[i]]<-sjlabelled::set_label(TB_SEC_IV[[i]], label=DICC_TB_SEC_IV[DICC_TB_SEC_IV$NEMONICO==i,]$NOMBRE_CAMPO)
+  
+}
+
+```
+
+## Importación de catalagos
+
+Aquí hay una pequeña complicación, hay un archivo por preguntar. Para esto nos servirán las funciones de dir()
+
+```{r}
+dir("data_t3")
+```
+
+Lista los archivos que hay. Si no tienen extensión son carpetas.
+
+```{r}
+cd3<-paste0(cd2,"TB_SEC_III","/catalogos")
+dir(cd3)
+```
+
+Podemos guardar esa lista como un objeto caracter
+
+```{r}
+cat_TB_SEC_III<-dir(cd3) %>% stringr::str_remove_all(".csv")
+
+```
+
+### Etiquetado de valores
+
+Vamos a etiquetar, ojo las variables de "id" no se etiquetan en valores.
+
+```{r}
+vars<-cat_TB_SEC_III[c(1:8, 14:25)]
+
+for (i in vars) {
+  
+  x <- readr::read_csv(paste0(cd3,"/",i,".csv"),
+                locale = locale(encoding = "latin1")) %>% unique()
+  
+  TB_SEC_III[[i]]<-as.numeric(TB_SEC_III[[i]])
+  TB_SEC_III[[i]]<-set_labels(TB_SEC_III[[i]], labels=x$descrip)
+}
+
+```
+
+Ejercicio, haz lo mismo para la sección IV
+
+```{r}
+
+cd3<-paste0(cd2,"TB_SEC_IV","/catalogos")
+dir(cd3)
+
+DICC_TB_SEC_IV %>% 
+  filter(TIPO=="Numérico") %>% 
+  select(NEMONICO) -> vars
+
+# for (i in vars$NEMONICO) {
+#   
+#   x <- read_csv(paste0(cd3,"/",i,".csv"),
+#                 locale = locale(encoding = "latin1")) %>% unique() 
+#   
+#   TB_SEC_IV[[i]]<-as.numeric(TB_SEC_IV[[i]])
+#   
+#   TB_SEC_IV[[i]]<-set_labels(TB_SEC_IV[[i]], labels=x$descrip)
+# }
+
+```
+
+Pueden haber errores pero pues, ahorra mucho
+
+```{r}
+TB_SEC_III %>% 
+  mutate(P3_1=as_label(P3_1)) %>% 
+  tabyl(P3_1)
+```
+
+No siempre funciona... o funcional 100
+
+```{r}
+
+TB_SEC_IV %>% 
+  mutate(P4AB_1=as_label(P4AB_1)) %>% 
+  tabyl(P4AB_1) 
+```
+
+Lo ideal en este caso es etiquetar antes de fusionar.
+
+Vamos a botar algunos objeto que ya no ocuparemos
+
+Checa con glipmse()
+
+```{r}
+glimpse(TB_SEC_III$P3_1) # perdimos la label
+```
+
+```{r}
+rm(list=ls(pattern="^DICC_"))
+rm(list=ls(pattern="^cat_"))
+
+```
+
+## Fusionado
+
+Para que se guarden las etiquetas debemos usar los "join" de {dplyr}
+
+Además esta base no tiene una sólo variable del id. Tiene un *identificador compuesto*. Podemos hacer un objeto tipo vector
+
+```{r}
+
+endireh2021_ind<-TB_SEC_III %>% 
+  left_join(TB_SEC_IV, by="ID_PER") %>% 
+  select(-ends_with(".y")) %>% # quita todas las variables que terminan en .y
+  rename_with(~ stringr::str_remove(.x,  pattern = ".x"),  ends_with(".x")) %>% 
+  left_join(TB_SEC_VIII, by="ID_PER") %>% 
+  select(-ends_with(".y")) %>% # quita todas las variables que terminan en .y
+  rename_with(~ stringr::str_remove(.x,  pattern = ".x"),  ends_with(".x")) 
+
+endireh2021_ind %>% names()
+
+```
+
+Hoy pegamos estas 110,127 mujeres al sociodemográfico
+
+```{r}
+endireh2021<-endireh2021_ind %>% 
+  right_join(TSDem, by="ID_PER") %>%  # ojo con el right ¿por qué?
+  select(-ends_with(".x")) %>% # quita todas las variables que terminan en .x
+  rename_with(~ stringr::str_remove(.x,  pattern = ".y"),  ends_with(".y"))
+```
+
+Finalmente pegamos la vivienda.
+
+```{r}
+endireh2021<-endireh2021 %>% 
+  right_join(TVIV, by="ID_VIV") %>%  # ojo con el right ¿por qué?
+  select(-ends_with(".x")) %>% # quita todas las variables que terminan en .x
+  rename_with(~ stringr::str_remove(.x,  pattern = ".y"),  ends_with(".y"))
+```
+
+```{r}
+rm(endireh2021_ind, indice_tablas)
+```
+
+## Skim
+
+```{r}
+endireh2021 %>% 
+  skimr::skim()
+```
