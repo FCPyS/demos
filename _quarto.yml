@@ -30,6 +30,9 @@ website:
         contents:
           - talleres.qmd
           - t1_cacenso.qmd
+          - t2_endiseg2021.qmd
+          - t3_endireh2021.qmd
+
    
   page-footer: 
     left: "Sitio web del Proyecto PAPIME PE303423 Recursos didácticos para la enseñanza de la Sociodemografía"
