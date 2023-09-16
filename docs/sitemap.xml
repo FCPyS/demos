@@ -1,35 +1,39 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://fcpys.github.io/demos/quienes.html</loc>
-    <lastmod>2023-09-16T19:37:42.226Z</lastmod>
-  </url>
-  <url>
-    <loc>https://fcpys.github.io/demos/t2_endiseg2021.html</loc>
-    <lastmod>2023-06-27T02:26:31.509Z</lastmod>
-  </url>
-  <url>
-    <loc>https://fcpys.github.io/demos/t1_cacenso.html</loc>
-    <lastmod>2023-06-27T02:26:46.651Z</lastmod>
-  </url>
-  <url>
-    <loc>https://fcpys.github.io/demos/index.html</loc>
-    <lastmod>2023-06-27T02:26:46.881Z</lastmod>
-  </url>
-  <url>
     <loc>https://fcpys.github.io/demos/about.html</loc>
-    <lastmod>2023-06-27T02:26:47.146Z</lastmod>
-  </url>
-  <url>
-    <loc>https://fcpys.github.io/demos/talleres.html</loc>
-    <lastmod>2023-06-27T02:26:47.390Z</lastmod>
-  </url>
-  <url>
-    <loc>https://fcpys.github.io/demos/t3_endireh2021.html</loc>
-    <lastmod>2023-06-27T02:27:16.649Z</lastmod>
+    <lastmod>2023-09-16T20:28:53.271Z</lastmod>
   </url>
   <url>
     <loc>https://fcpys.github.io/demos/cuestion.html</loc>
-    <lastmod>2023-06-27T02:27:16.879Z</lastmod>
+    <lastmod>2023-09-16T20:28:53.578Z</lastmod>
+  </url>
+  <url>
+    <loc>https://fcpys.github.io/demos/index.html</loc>
+    <lastmod>2023-09-16T20:28:53.894Z</lastmod>
+  </url>
+  <url>
+    <loc>https://fcpys.github.io/demos/quienes.html</loc>
+    <lastmod>2023-09-16T20:28:54.497Z</lastmod>
+  </url>
+  <url>
+    <loc>https://fcpys.github.io/demos/recursos.html</loc>
+    <lastmod>2023-09-16T21:33:17.805Z</lastmod>
+  </url>
+  <url>
+    <loc>https://fcpys.github.io/demos/t1_cacenso.html</loc>
+    <lastmod>2023-09-16T20:29:14.974Z</lastmod>
+  </url>
+  <url>
+    <loc>https://fcpys.github.io/demos/t2_endiseg2021.html</loc>
+    <lastmod>2023-09-16T20:34:21.736Z</lastmod>
+  </url>
+  <url>
+    <loc>https://fcpys.github.io/demos/t3_endireh2021.html</loc>
+    <lastmod>2023-09-16T20:35:16.848Z</lastmod>
+  </url>
+  <url>
+    <loc>https://fcpys.github.io/demos/talleres.html</loc>
+    <lastmod>2023-09-16T20:35:17.202Z</lastmod>
   </url>
 </urlset>

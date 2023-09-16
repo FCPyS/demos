@@ -1,3 +1,5 @@
+![](ima/header.png){fig-align="center" width="400"}
+
 ---
 title: "Recursos en línea"
 ---
