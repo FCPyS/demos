@@ -2,17 +2,28 @@
 title: "Talleres"
 ---
 
-En coordinación con el capítulo de las R-Ladies CDMX, en el mes de junio se impartirán tres talleres sobre uso de información demográfica... 
-
+En coordinación con el capítulo de las R-Ladies CDMX, en el mes de junio se impartirán tres talleres sobre uso de información demográfica...
 
 ## demos::taller("CACENSO2020)
 
 ![](ima/2.png){fig-align="center" width="500"}
 
+### Video de la sesión
+
+<iframe src="https://www.facebook.com/plugins/video.php?height=314&href=https%3A%2F%2Fwww.facebook.com%2Frladiescdmx%2Fvideos%2F776827570764633%2F&show_text=false&width=560&t=0" width="560" height="314" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share" allowFullScreen="true"></iframe></iframe>
+
 ## demos::taller("ENDISEG2021")
 
 ![](ima/1.png){fig-align="center" width="500"}
 
+### Video de la sesión
+
+<iframe src="https://www.facebook.com/plugins/video.php?height=314&href=https%3A%2F%2Fwww.facebook.com%2Frladiescdmx%2Fvideos%2F909693547386028%2F&show_text=false&width=560&t=0" width="560" height="314" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share" allowFullScreen="true"></iframe></iframe>
+
 ## demos::taller("ENDIREH2021")
 
 ![](ima/3.png){fig-align="center" width="500"}
+
+### Video de la sesión
+
+<iframe src="https://www.facebook.com/plugins/video.php?height=314&href=https%3A%2F%2Fwww.facebook.com%2Frladiescdmx%2Fvideos%2F1208513707212550%2F&show_text=false&width=560&t=0" width="560" height="314" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share" allowFullScreen="true"></iframe></iframe>

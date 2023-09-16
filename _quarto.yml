@@ -21,6 +21,9 @@ website:
         file: quienes.qmd 
       - text: "Cuestionario"
         file: cuestion.qmd 
+      - text: "Recursos en línea"
+        file: recursos.qmd
+
 
   sidebar:
     style: "floating"

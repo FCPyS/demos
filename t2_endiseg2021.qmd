@@ -10,6 +10,10 @@ En esta liga puedes descarga el proyecto de trabajo. De esta manera no tendremos
 
 <https://tinyurl.com/demos-talleres>
 
+## Video de la sesión
+
+<iframe src="https://www.facebook.com/plugins/video.php?height=314&href=https%3A%2F%2Fwww.facebook.com%2Frladiescdmx%2Fvideos%2F909693547386028%2F&show_text=false&width=560&t=0" width="560" height="314" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share" allowFullScreen="true"></iframe></iframe>
+
 ### Paquetes
 
 ```{r}

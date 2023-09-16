@@ -5,3 +5,6 @@
 
 /.quarto/
 demos/
+docs/sitemap.xml
+docs/site_libs/bootstrap/bootstrap.min.css
+docs/quienes.html

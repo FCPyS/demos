@@ -1,0 +1,17 @@
+---
+title: "Recursos en línea"
+---
+
+## **Aquí material extra de interés**
+
+### **La bañera - Dinámica Demográfica**
+
+{{< video https://youtu.be/QI9q7OQk4HU >}}
+
+### **El censo de facto en Chile por 31 minutos**
+
+{{< video https://youtu.be/igV8OAyL2f4 >}}
+
+### **Dra. Victoria Prieto: Big Data y Migración**
+
+{{< video https://youtu.be/MYTlGAtEcqY >}}
