@@ -1,0 +1,1083 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.2.269">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>DEMOS - T4: ENOE t223</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="nav-sidebar floating nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a class="navbar-brand" href="./index.html">
+    <span class="navbar-title">DEMOS</span>
+    </a>
+  </div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="./index.html">
+ <span class="menu-text">Inicio</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./about.html">
+ <span class="menu-text">Sobre el proyecto</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./quienes.html">
+ <span class="menu-text">¿Quienes somos?</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./cuestion.html">
+ <span class="menu-text">Cuestionario</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./recursos.html">
+ <span class="menu-text">Recursos en línea</span></a>
+  </li>  
+</ul>
+              <div id="quarto-search" class="" title="Search"></div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+  <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+    <div class="container-fluid d-flex justify-content-between">
+      <h1 class="quarto-secondary-nav-title">T4: ENOE t223</h1>
+      <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
+        <i class="bi bi-chevron-right"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation floating overflow-auto">
+      <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+      </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">Talleres</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./talleres.html" class="sidebar-item-text sidebar-link">Talleres</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./t1_cacenso.html" class="sidebar-item-text sidebar-link">T1: Cuestionario Ampliado</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./t2_endiseg2021.html" class="sidebar-item-text sidebar-link">T2: ENDISEG 2021</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./t3_endireh2021.html" class="sidebar-item-text sidebar-link">T3: ENDIREH 2021</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./t4_enoe223.html" class="sidebar-item-text sidebar-link active">T4: ENOE t223</a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#introducción" id="toc-introducción" class="nav-link active" data-scroll-target="#introducción">Introducción</a></li>
+  <li><a href="#descarga-el-proyecto-desde-acá" id="toc-descarga-el-proyecto-desde-acá" class="nav-link" data-scroll-target="#descarga-el-proyecto-desde-acá">Descarga el proyecto desde acá</a></li>
+  <li><a href="#paquetes" id="toc-paquetes" class="nav-link" data-scroll-target="#paquetes">Paquetes</a></li>
+  <li><a href="#un-mini-repaso" id="toc-un-mini-repaso" class="nav-link" data-scroll-target="#un-mini-repaso">Un mini repaso</a>
+  <ul class="collapse">
+  <li><a href="#datos-primera-parte" id="toc-datos-primera-parte" class="nav-link" data-scroll-target="#datos-primera-parte">Datos primera parte</a></li>
+  <li><a href="#fusionado-uno-a-uno-de-los-coe" id="toc-fusionado-uno-a-uno-de-los-coe" class="nav-link" data-scroll-target="#fusionado-uno-a-uno-de-los-coe">Fusionado uno a uno de los COE</a></li>
+  <li><a href="#fusionado-de-las-otras-tablas" id="toc-fusionado-de-las-otras-tablas" class="nav-link" data-scroll-target="#fusionado-de-las-otras-tablas">Fusionado de las otras tablas</a></li>
+  </ul></li>
+  <li><a href="#algunos-tabulados-de-la-enoe" id="toc-algunos-tabulados-de-la-enoe" class="nav-link" data-scroll-target="#algunos-tabulados-de-la-enoe">Algunos tabulados de la ENOE</a>
+  <ul class="collapse">
+  <li><a href="#ingresos" id="toc-ingresos" class="nav-link" data-scroll-target="#ingresos">Ingresos</a></li>
+  </ul></li>
+  <li><a href="#segunda-parte-panel-rotativo" id="toc-segunda-parte-panel-rotativo" class="nav-link" data-scroll-target="#segunda-parte-panel-rotativo">Segunda parte: panel rotativo</a>
+  <ul class="collapse">
+  <li><a href="#datos-segunta-parte" id="toc-datos-segunta-parte" class="nav-link" data-scroll-target="#datos-segunta-parte">Datos segunta parte</a></li>
+  <li><a href="#de-long-a-wide" id="toc-de-long-a-wide" class="nav-link" data-scroll-target="#de-long-a-wide">De long a wide</a></li>
+  </ul></li>
+  <li><a href="#algunas-cosas-para-pensar" id="toc-algunas-cosas-para-pensar" class="nav-link" data-scroll-target="#algunas-cosas-para-pensar">Algunas cosas para pensar</a></li>
+  </ul>
+<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/FCPyS/demos/edit/main/t4_enoe223.qmd" class="toc-action">Edit this page</a></p><p><a href="https://github.com/FCPyS/demos/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title d-none d-lg-block">T4: ENOE t223</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+</header>
+
+<section id="introducción" class="level2">
+<h2 class="anchored" data-anchor-id="introducción">Introducción</h2>
+<p>Aquí dejo la presentación</p>
+<iframe src="./04_ppt2023.pdf" title="Taller 4" width="600" height="400">
+</iframe>
+</section>
+<section id="descarga-el-proyecto-desde-acá" class="level2">
+<h2 class="anchored" data-anchor-id="descarga-el-proyecto-desde-acá">Descarga el proyecto desde acá</h2>
+<p>En esta liga puedes descarga el proyecto de trabajo. De esta manera no tendremos problemas con las rutas relativas.</p>
+<p><a href="https://tinyurl.com/demos-talleres" class="uri">https://tinyurl.com/demos-talleres</a></p>
+</section>
+<section id="paquetes" class="level2">
+<h2 class="anchored" data-anchor-id="paquetes">Paquetes</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">require</span>(<span class="st">"pacman"</span>)) <span class="fu">install.packages</span>(<span class="st">"pacman"</span>) <span class="co"># instala pacman si se requiere</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Loading required package: pacman</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>pacman<span class="sc">::</span><span class="fu">p_load</span>(tidyverse,</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>               haven,</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>               sjlabelled,</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>               pollster,</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>               janitor) <span class="co">#carga los paquetes necesarios </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="un-mini-repaso" class="level2">
+<h2 class="anchored" data-anchor-id="un-mini-repaso">Un mini repaso</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>a <span class="ot">&lt;-</span> <span class="dv">2</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>b <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"a"</span>, <span class="st">"b"</span>)</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>c <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="cn">NA</span>, T, F,<span class="dv">2</span>)</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="cn">NA</span><span class="sc">==</span>F</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] NA</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="cn">NA</span>, T, F, <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] NA</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(c)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] NA</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(c, <span class="at">na.rm=</span>T)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 3</code></pre>
+</div>
+</div>
+<section id="datos-primera-parte" class="level3">
+<h3 class="anchored" data-anchor-id="datos-primera-parte">Datos primera parte</h3>
+<p>Vamos a fusionar la ENOE, se ha descargado desde INEGI su versión .dta</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>vivt223 <span class="ot">&lt;-</span> haven<span class="sc">::</span><span class="fu">read_dta</span>(<span class="st">"data_t4/2023trim2_dta/VIVT223.dta"</span>) </span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>hogt223 <span class="ot">&lt;-</span> haven<span class="sc">::</span><span class="fu">read_dta</span>(<span class="st">"data_t4/2023trim2_dta/HOGT223.dta"</span>)</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>sdemt223 <span class="ot">&lt;-</span> haven<span class="sc">::</span><span class="fu">read_dta</span>(<span class="st">"data_t4/2023trim2_dta/SDEMT223.dta"</span>)</span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>coe1t223 <span class="ot">&lt;-</span> haven<span class="sc">::</span><span class="fu">read_dta</span>(<span class="st">"data_t4/2023trim2_dta/COE1T223.dta"</span>)</span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>coe2t223 <span class="ot">&lt;-</span> haven<span class="sc">::</span><span class="fu">read_dta</span>(<span class="st">"data_t4/2023trim2_dta/COE2T223.dta"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="fusionado-uno-a-uno-de-los-coe" class="level3">
+<h3 class="anchored" data-anchor-id="fusionado-uno-a-uno-de-los-coe">Fusionado uno a uno de los COE</h3>
+<p>Estas dos tablas sólo son para mayores de 12 años</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>coet223 <span class="ot">&lt;-</span> coe1t223 <span class="sc">%&gt;%</span> </span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">inner_join</span>(coe2t223)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Joining with `by = join_by(cd_a, ent, con, upm, d_sem, n_pro_viv, v_sel, n_hog,
+h_mud, n_ent, per, n_ren, eda, n_inf, ur, tipo, mes_cal, fac_tri, fac_men)`</code></pre>
+</div>
+</div>
+<p>Hay tres opciones más de <em>join</em></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">help</span>(<span class="st">"mutate-joins"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="fusionado-de-las-otras-tablas" class="level3">
+<h3 class="anchored" data-anchor-id="fusionado-de-las-otras-tablas">Fusionado de las otras tablas</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>idviv <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"tipo"</span>, <span class="st">"mes_cal"</span>, <span class="st">"cd_a"</span>, <span class="st">"ent"</span>, <span class="st">"con"</span>, <span class="st">"v_sel"</span>)</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>idhog <span class="ot">&lt;-</span> <span class="fu">c</span>(idviv, <span class="st">"n_hog"</span>, <span class="st">"h_mud"</span>)</span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>idsdem <span class="ot">&lt;-</span> <span class="fu">c</span>(idhog, <span class="st">"n_ren"</span> )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>No queremos viviendas vacías</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>enoe0<span class="ot">&lt;-</span>vivt223 <span class="sc">%&gt;%</span> </span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">inner_join</span>(hogt223, <span class="at">by=</span>idviv)</span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(enoe0)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 151329     56</code></pre>
+</div>
+</div>
+<p>Revisemos esta base</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(enoe0)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] "loc.x"       "mun.x"       "est.x"       "est_d_tri.x" "est_d_men.x"
+ [6] "ageb.x"      "t_loc_tri.x" "t_loc_men.x" "cd_a"        "ent"        
+[11] "con"         "upm.x"       "d_sem.x"     "n_pro_viv.x" "v_sel"      
+[16] "n_ent.x"     "per.x"       "p1"          "p2"          "p3"         
+[21] "ur.x"        "tipo"        "mes_cal"     "fac_tri.x"   "fac_men.x"  
+[26] "loc.y"       "mun.y"       "est.y"       "est_d_tri.y" "est_d_men.y"
+[31] "ageb.y"      "t_loc_tri.y" "t_loc_men.y" "upm.y"       "d_sem.y"    
+[36] "n_pro_viv.y" "n_hog"       "h_mud"       "n_ent.y"     "per.y"      
+[41] "r_pre"       "p_dia"       "p_mes"       "p_anio"      "r_def"      
+[46] "d_dia"       "d_mes"       "d_anio"      "e_obs"       "p4_1"       
+[51] "p4_2"        "inf"         "ur.y"        "tipolev"     "fac_tri.y"  
+[56] "fac_men.y"  </code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>enoe0 <span class="sc">%&gt;%</span> </span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(fac_tri.x<span class="sc">==</span>fac_tri.y)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 2 × 2
+  `fac_tri.x == fac_tri.y`      n
+  &lt;lgl&gt;                     &lt;int&gt;
+1 FALSE                       135
+2 TRUE                     151194</code></pre>
+</div>
+</div>
+<p>¿Por qué pasa esto?</p>
+<p>No hay hogares en esas viviendas, hay valores en la base x, pero no en la base y</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>enoe0 <span class="sc">%&gt;%</span> </span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">filter</span>(<span class="sc">!</span>fac_tri.x<span class="sc">==</span>fac_tri.y) <span class="sc">%&gt;%</span> </span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>  janitor<span class="sc">::</span><span class="fu">tabyl</span>(fac_tri.x, fac_tri.y)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> fac_tri.x 0
+        12 1
+        20 2
+        21 1
+        22 2
+        24 1
+        28 1
+        32 1
+        33 1
+        34 1
+        36 1
+        39 3
+        43 1
+        44 1
+        47 1
+        48 1
+        49 1
+        52 3
+        64 1
+        65 1
+        66 2
+        68 2
+        69 2
+        70 2
+        71 1
+        74 1
+        76 1
+        78 1
+        79 1
+        83 1
+        85 2
+        88 2
+        90 1
+        93 2
+        98 1
+       100 1
+       101 2
+       103 1
+       107 1
+       111 1
+       118 1
+       123 1
+       126 2
+       130 1
+       134 4
+       136 2
+       142 2
+       143 1
+       147 2
+       149 1
+       151 1
+       152 1
+       161 1
+       162 1
+       163 1
+       166 2
+       167 1
+       168 1
+       172 1
+       189 1
+       191 1
+       194 1
+       198 1
+       199 3
+       201 1
+       202 1
+       203 1
+       217 2
+       221 1
+       227 1
+       232 1
+       243 2
+       255 1
+       261 1
+       264 1
+       267 2
+       282 2
+       301 2
+       328 1
+       344 1
+       361 1
+       381 1
+       398 1
+       404 1
+       416 1
+       428 1
+       485 1
+       492 4
+       495 3
+       529 2
+       549 1
+       643 1
+       709 1
+       785 1
+       827 1
+       872 1
+      1136 1
+      1237 1
+      1302 2
+      4275 1</code></pre>
+</div>
+</div>
+<p>Obviamente, vamos quedarnos con la información.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>enoe0<span class="ot">&lt;-</span>enoe0 <span class="sc">%&gt;%</span> </span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(<span class="sc">-</span><span class="fu">ends_with</span>(<span class="st">".y"</span>)) <span class="sc">%&gt;%</span> <span class="co"># quita las variables que terminan con .y</span></span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">rename_at</span>(<span class="fu">vars</span>(<span class="fu">ends_with</span>(<span class="st">".x"</span>)), <span class="sc">~</span> stringr<span class="sc">::</span><span class="fu">str_remove</span>(.x, <span class="st">".x"</span>)) <span class="co"># renombra todas las variables que terminan en .x quitándoles el sufijo</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Hoy pegaremos de manera similar a los individuos, pero primero nos vamos a quedar con quiénes tienen resultados definitivos de entrevistas completas</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>enoe0 <span class="sc">%&gt;%</span> </span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(<span class="fu">as_label</span>(r_def))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 14 × 2
+   `as_label(r_def)`                                             n
+   &lt;fct&gt;                                                     &lt;int&gt;
+ 1 Entrevista completa                                      125951
+ 2 Nadie en el momento de la entrevista                       4876
+ 3 Ausente temporal                                           1659
+ 4 Se negó a dar información                                  5441
+ 5 Informante inadecuado                                       201
+ 6 Otro motivo                                                2496
+ 7 Adecuada para habitarse                                    5751
+ 8 De uso temporal                                            3489
+ 9 Inadecuada para habitarse                                   322
+10 De uso temporal para fines diferentes de habitación         481
+11 Demolida                                                     80
+12 Uso permanente para fines diferentes a los de habitación    262
+13 El hogar se mudó                                             79
+14 Entrevista suspendida                                       241</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>sdemt223 <span class="sc">%&gt;%</span> </span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(<span class="fu">as_label</span>(c_res))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 3 × 2
+  `as_label(c_res)`       n
+  &lt;fct&gt;               &lt;int&gt;
+1 Residente habitual 418269
+2 Ausente definitivo   7406
+3 Nuevo residente      5474</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>enoe0 <span class="ot">&lt;-</span> enoe0 <span class="sc">%&gt;%</span> </span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(r_def<span class="sc">==</span><span class="dv">0</span>) <span class="co">#entrevista completa</span></span>
+<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a>sdemt223 <span class="ot">&lt;-</span> sdemt223 <span class="sc">%&gt;%</span> </span>
+<span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(r_def<span class="sc">==</span><span class="dv">0</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb30-6"><a href="#cb30-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span>c_res<span class="sc">==</span><span class="dv">2</span>) <span class="co"># residente que no es ausente</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>enoe1<span class="ot">&lt;-</span>enoe0 <span class="sc">%&gt;%</span> </span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">left_join</span>(sdemt223, <span class="at">by=</span>idhog) <span class="sc">%&gt;%</span> </span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(<span class="sc">-</span><span class="fu">ends_with</span>(<span class="st">".y"</span>)) <span class="sc">%&gt;%</span> <span class="co"># quita las variables que terminan con .y</span></span>
+<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">rename_at</span>(<span class="fu">vars</span>(<span class="fu">ends_with</span>(<span class="st">".x"</span>)), <span class="sc">~</span> stringr<span class="sc">::</span><span class="fu">str_remove</span>(.x, <span class="st">".x"</span>)) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: `cd_a` and `cd_a` have conflicting value labels.
+ℹ Labels for these values will be taken from `cd_a`.
+✖ Values: 1</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(enoe1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 422778    129</code></pre>
+</div>
+</div>
+<p>Ya tenemos lista una base de individuos que podemos pegar con nuestra base de coe. Pero revisemos que este cuestionario tiene preguntas simulares a la cuestionario de otras tablas</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="fu">intersect</span>(<span class="fu">names</span>(enoe1), <span class="fu">names</span>(coet223))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] "cd_a"      "ent"       "con"       "upm"       "d_sem"     "n_pro_viv"
+ [7] "v_sel"     "n_ent"     "per"       "p1"        "p3"        "ur"       
+[13] "tipo"      "mes_cal"   "fac_tri"   "fac_men"   "n_hog"     "h_mud"    
+[19] "r_def"     "p4_1"      "p4_2"      "n_ren"     "eda"      </code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>coet223<span class="ot">&lt;-</span> coet223 <span class="sc">%&gt;%</span> </span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">rename_at</span>(<span class="fu">vars</span>(p1, p3, p4_1, p4_2), <span class="sc">~</span> <span class="fu">paste0</span>(.x, <span class="st">"coe"</span>) )<span class="sc">%&gt;%</span> </span>
+<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(<span class="sc">-</span><span class="fu">ends_with</span>(<span class="st">".y"</span>)) <span class="sc">%&gt;%</span> <span class="co"># quita las variables que terminan con .y</span></span>
+<span id="cb37-4"><a href="#cb37-4" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">rename_at</span>(<span class="fu">vars</span>(<span class="fu">ends_with</span>(<span class="st">".x"</span>)), <span class="sc">~</span> stringr<span class="sc">::</span><span class="fu">str_remove</span>(.x, <span class="st">".x"</span>)) </span>
+<span id="cb37-5"><a href="#cb37-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-6"><a href="#cb37-6" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(coet223)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  [1] "r_def"     "cd_a"      "ent"       "con"       "upm"       "d_sem"    
+  [7] "n_pro_viv" "v_sel"     "n_hog"     "h_mud"     "n_ent"     "per"      
+ [13] "n_ren"     "eda"       "n_inf"     "p1coe"     "p1a1"      "p1a2"     
+ [19] "p1a3"      "p1b"       "p1c"       "p1d"       "p1e"       "p2_1"     
+ [25] "p2_2"      "p2_3"      "p2_4"      "p2_9"      "p2a_dia"   "p2a_sem"  
+ [31] "p2a_mes"   "p2a_anio"  "p2b_dia"   "p2b_sem"   "p2b_mes"   "p2b_anio" 
+ [37] "p2b"       "p2c"       "p2d1"      "p2d2"      "p2d3"      "p2d4"     
+ [43] "p2d5"      "p2d6"      "p2d7"      "p2d8"      "p2d9"      "p2d10"    
+ [49] "p2d11"     "p2d99"     "p2e"       "p2f"       "p2g1"      "p2g2"     
+ [55] "p2h1"      "p2h2"      "p2h3"      "p2h4"      "p2h9"      "p2i"      
+ [61] "p2j"       "p2k_anio"  "p2k_mes"   "p2k"       "p3coe"     "p3a"      
+ [67] "p3b"       "p3c1"      "p3c2"      "p3c3"      "p3c4"      "p3c9"     
+ [73] "p3d"       "p3e"       "p3f1"      "p3f2"      "p3g1_1"    "p3g1_2"   
+ [79] "p3g2_1"    "p3g2_2"    "p3g3_1"    "p3g3_2"    "p3g4_1"    "p3g4_2"   
+ [85] "p3g9"      "p3g_tot"   "p3h"       "p3i"       "p3j1"      "p3j2"     
+ [91] "p3k1"      "p3k2"      "p3k3"      "p3k4"      "p3k5"      "p3k9"     
+ [97] "p3l"       "p4"        "p4_1coe"   "p4_2coe"   "p4_3"      "p4a"      
+[103] "p4a_1"     "p4b"       "p4c"       "p4d1"      "p4d2"      "p4d3"     
+[109] "p4e"       "p4f"       "p4g"       "p4h"       "p4i"       "p4i_1"    
+[115] "p5"        "p5a"       "p5b_hlu"   "p5b_mlu"   "p5b_hma"   "p5b_mma"  
+[121] "p5b_hmi"   "p5b_mmi"   "p5b_hju"   "p5b_mju"   "p5b_hvi"   "p5b_mvi"  
+[127] "p5b_hsa"   "p5b_msa"   "p5b_hdo"   "p5b_mdo"   "p5b_thrs"  "p5b_tdia" 
+[133] "p5c"       "p5d1"      "p5d_hlu"   "p5d_mlu"   "p5d_hma"   "p5d_mma"  
+[139] "p5d_hmi"   "p5d_mmi"   "p5d_hju"   "p5d_mju"   "p5d_hvi"   "p5d_mvi"  
+[145] "p5d_hsa"   "p5d_msa"   "p5d_hdo"   "p5d_mdo"   "p5d_thrs"  "p5d_tdia" 
+[151] "p5e"       "p5f1"      "p5f2"      "p5f3"      "p5f4"      "p5f5"     
+[157] "p5f6"      "p5f7"      "p5f8"      "p5f9"      "p5f10"     "p5f11"    
+[163] "p5f12"     "p5f13"     "p5f14"     "p5f15"     "p5f99"     "ur"       
+[169] "tipo"      "mes_cal"   "fac_tri"   "fac_men"   "p6_1"      "p6_2"     
+[175] "p6_3"      "p6_4"      "p6_5"      "p6_6"      "p6_7"      "p6_8"     
+[181] "p6_9"      "p6_10"     "p6_99"     "p6a1"      "p6a2"      "p6a3"     
+[187] "p6a4"      "p6a9"      "p6b1"      "p6b2"      "p6c"       "p6d"      
+[193] "p6e"       "p6e_c"     "p6f"       "p6f_c"     "p6g"       "p6h"      
+[199] "p6h_c"     "p6i"       "p6i_c"     "p7"        "p7a"       "p7b"      
+[205] "p7c"       "p8_1"      "p8_2"      "p8_3"      "p8_4"      "p8_9"     
+[211] "p8a"       "p9_1"      "p9_h1"     "p9_m1"     "p9_2"      "p9_h2"    
+[217] "p9_m2"     "p9_3"      "p9_h3"     "p9_m3"     "p9_4"      "p9_h4"    
+[223] "p9_m4"     "p9_5"      "p9_h5"     "p9_m5"     "p9_6"      "p9_h6"    
+[229] "p9_m6"     "p9_7"      "p9_h7"     "p9_m7"     "p9_8"      "p9_h8"    
+[235] "p9_m8"    </code></pre>
+</div>
+</div>
+<p>Base final:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>enoet223 <span class="ot">&lt;-</span> enoe1 <span class="sc">%&gt;%</span> </span>
+<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(coet223)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Joining with `by = join_by(cd_a, ent, con, upm, d_sem, n_pro_viv, v_sel, n_ent,
+per, ur, tipo, mes_cal, fac_tri, fac_men, n_hog, h_mud, r_def, n_ren, eda)`</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(enoet223)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 422778    345</code></pre>
+</div>
+</div>
+<p>Vamos a quitar algunos objetos para mejorar nuestro uso de memoria</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span>(vivt223, hogt223, coe1t223, coe2t223, coet223, enoe0, enoe1)</span>
+<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a><span class="fu">gc</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>            used   (Mb) gc trigger   (Mb) limit (Mb)  max used   (Mb)
+Ncells   1145499   61.2    1984997  106.1         NA   1984997  106.1
+Vcells 196113532 1496.3  527288009 4022.9      16384 443202378 3381.4</code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="algunos-tabulados-de-la-enoe" class="level2">
+<h2 class="anchored" data-anchor-id="algunos-tabulados-de-la-enoe">Algunos tabulados de la ENOE</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Sin expansión</span></span>
+<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a>enoet223 <span class="sc">%&gt;%</span></span>
+<span id="cb45-3"><a href="#cb45-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(eda<span class="sc">&gt;</span><span class="dv">14</span> <span class="sc">&amp;</span> eda<span class="sc">&lt;</span><span class="dv">99</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb45-4"><a href="#cb45-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">clase1=</span><span class="fu">as_label</span>(clase1)) <span class="sc">%&gt;%</span> </span>
+<span id="cb45-5"><a href="#cb45-5" aria-hidden="true" tabindex="-1"></a>  janitor<span class="sc">::</span><span class="fu">tabyl</span>(clase1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>                             clase1      n percent
+                          No aplica      0 0.00000
+    Población económicamente activa 201003 0.60978
+ Población no económicamente activa 128629 0.39022</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Con expansión</span></span>
+<span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a>enoet223 <span class="sc">%&gt;%</span></span>
+<span id="cb47-3"><a href="#cb47-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(eda<span class="sc">&gt;</span><span class="dv">14</span> <span class="sc">&amp;</span> eda<span class="sc">&lt;</span><span class="dv">99</span>) <span class="sc">%&gt;%</span> <span class="co"># este el filtro que usa inegi para sus tabulados</span></span>
+<span id="cb47-4"><a href="#cb47-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">clase1=</span><span class="fu">as_label</span>(clase1)) <span class="sc">%&gt;%</span> </span>
+<span id="cb47-5"><a href="#cb47-5" aria-hidden="true" tabindex="-1"></a>  pollster<span class="sc">::</span><span class="fu">topline</span>(clase1, <span class="at">weight =</span> fac_tri)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 2 × 5
+  Response                Frequency Percent `Valid Percent` `Cumulative Percent`
+  &lt;fct&gt;                       &lt;dbl&gt;   &lt;dbl&gt;           &lt;dbl&gt;                &lt;dbl&gt;
+1 Población económicamen…  60216432    60.2            60.2                 60.2
+2 Población no económica…  39834351    39.8            39.8                100  </code></pre>
+</div>
+</div>
+<p>Siempre checa que tus tabulados sean como los de INEGI de tu variable a estudiar</p>
+<p><img src="ima/enoe1.png" class="img-fluid"></p>
+<p>De doble entrada</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Sin expansión</span></span>
+<span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a>enoet223 <span class="sc">%&gt;%</span></span>
+<span id="cb49-3"><a href="#cb49-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(eda<span class="sc">&gt;</span><span class="dv">14</span> <span class="sc">&amp;</span> eda<span class="sc">&lt;</span><span class="dv">99</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb49-4"><a href="#cb49-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">clase1=</span><span class="fu">as_label</span>(clase1)) <span class="sc">%&gt;%</span> </span>
+<span id="cb49-5"><a href="#cb49-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">clase2=</span><span class="fu">as_label</span>(clase2)) <span class="sc">%&gt;%</span> </span>
+<span id="cb49-6"><a href="#cb49-6" aria-hidden="true" tabindex="-1"></a>  janitor<span class="sc">::</span><span class="fu">tabyl</span>(clase1, clase2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>                             clase1 No aplica Población ocupada
+                          No aplica         0                 0
+    Población económicamente activa         0            195374
+ Población no económicamente activa         0                 0
+ Población desocupada Disponibles No disponibles
+                    0           0              0
+                 5629           0              0
+                    0       16467         112162</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Con expansión</span></span>
+<span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a>enoet223 <span class="sc">%&gt;%</span></span>
+<span id="cb51-3"><a href="#cb51-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(eda<span class="sc">&gt;</span><span class="dv">14</span> <span class="sc">&amp;</span> eda<span class="sc">&lt;</span><span class="dv">99</span>) <span class="sc">%&gt;%</span> <span class="co"># este el filtro que usa inegi para sus tabulados</span></span>
+<span id="cb51-4"><a href="#cb51-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">clase1=</span><span class="fu">as_label</span>(clase1)) <span class="sc">%&gt;%</span> </span>
+<span id="cb51-5"><a href="#cb51-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">clase2=</span><span class="fu">as_label</span>(clase2)) <span class="sc">%&gt;%</span> </span>
+<span id="cb51-6"><a href="#cb51-6" aria-hidden="true" tabindex="-1"></a>  pollster<span class="sc">::</span><span class="fu">crosstab</span>(clase1, clase2, <span class="at">weight =</span> fac_tri)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 2 × 6
+  clase1 `Población ocupada` `Población desocupada` Disponibles `No disponibles`
+  &lt;fct&gt;                &lt;dbl&gt;                  &lt;dbl&gt;       &lt;dbl&gt;            &lt;dbl&gt;
+1 Pobla…                97.2                   2.81         0                0  
+2 Pobla…                 0                     0           13.0             87.0
+# ℹ 1 more variable: n &lt;dbl&gt;</code></pre>
+</div>
+</div>
+<section id="ingresos" class="level3">
+<h3 class="anchored" data-anchor-id="ingresos">Ingresos</h3>
+<p>Para los ingresos, INEGI publica los válidos, es decir los mayores a cero.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb53"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a>enoet223 <span class="sc">%&gt;%</span> </span>
+<span id="cb53-2"><a href="#cb53-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(eda<span class="sc">&gt;</span><span class="dv">14</span> <span class="sc">&amp;</span> eda<span class="sc">&lt;</span><span class="dv">99</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb53-3"><a href="#cb53-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(ing_x_hrs<span class="sc">&gt;</span><span class="dv">0</span>) <span class="sc">%&gt;%</span> <span class="co"># ojo</span></span>
+<span id="cb53-4"><a href="#cb53-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">promedio=</span><span class="fu">weighted.mean</span>(ing_x_hrs, <span class="at">w =</span> fac_tri))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1 × 1
+  promedio
+     &lt;dbl&gt;
+1     54.4</code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="segunda-parte-panel-rotativo" class="level2">
+<h2 class="anchored" data-anchor-id="segunda-parte-panel-rotativo">Segunda parte: panel rotativo</h2>
+<p>El panel rotativo. Para hacer un ejemplo vamos a pegar únicamente el cuestionario sociodemográfico. Y sólo podemos pegar las entrevistas cara a cara</p>
+<section id="datos-segunta-parte" class="level3">
+<h3 class="anchored" data-anchor-id="datos-segunta-parte">Datos segunta parte</h3>
+<p>Vamos a trabajar con el panel que inicia el t222 y termina en t2 de 2023. Para que no sea tan pesado el ambiente aprovechamos y hacermos más filtros incluyendo el número de entrevista correspondiente.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb55"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a>sdemt222 <span class="ot">&lt;-</span> <span class="fu">read_dta</span>(<span class="st">"data_t4/anterior/SDEMT222.dta"</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb55-2"><a href="#cb55-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(tipo<span class="sc">==</span><span class="dv">1</span>) <span class="sc">%&gt;%</span> <span class="co"># sólo cara cara</span></span>
+<span id="cb55-3"><a href="#cb55-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(r_def<span class="sc">==</span><span class="dv">0</span>) <span class="sc">%&gt;%</span> <span class="co"># sólo completa</span></span>
+<span id="cb55-4"><a href="#cb55-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span>c_res<span class="sc">==</span><span class="dv">2</span>) <span class="sc">%&gt;%</span>  <span class="co">#no ausentes definitivos</span></span>
+<span id="cb55-5"><a href="#cb55-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(n_ent<span class="sc">==</span><span class="dv">1</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb55-6"><a href="#cb55-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">trim=</span><span class="st">"t222"</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb55-7"><a href="#cb55-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate_at</span>(<span class="fu">vars</span>(cs_p20a_1, cs_p20a_c, </span>
+<span id="cb55-8"><a href="#cb55-8" aria-hidden="true" tabindex="-1"></a>                 cs_p20b_1, cs_p20b_c,</span>
+<span id="cb55-9"><a href="#cb55-9" aria-hidden="true" tabindex="-1"></a>                 cs_p20c_1), <span class="sc">~</span> <span class="fu">as.numeric</span>(.x))</span>
+<span id="cb55-10"><a href="#cb55-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb55-11"><a href="#cb55-11" aria-hidden="true" tabindex="-1"></a>sdemt322 <span class="ot">&lt;-</span> <span class="fu">read_dta</span>(<span class="st">"data_t4/anterior/SDEMT322.dta"</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb55-12"><a href="#cb55-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(tipo<span class="sc">==</span><span class="dv">1</span>) <span class="sc">%&gt;%</span> <span class="co"># sólo cara cara</span></span>
+<span id="cb55-13"><a href="#cb55-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(r_def<span class="sc">==</span><span class="dv">0</span>) <span class="sc">%&gt;%</span> <span class="co"># sólo completa</span></span>
+<span id="cb55-14"><a href="#cb55-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span>c_res<span class="sc">==</span><span class="dv">2</span>) <span class="sc">%&gt;%</span>  <span class="co">#no ausentes definitivos</span></span>
+<span id="cb55-15"><a href="#cb55-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(n_ent<span class="sc">==</span><span class="dv">2</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb55-16"><a href="#cb55-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">trim=</span><span class="st">"t322"</span>) </span>
+<span id="cb55-17"><a href="#cb55-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb55-18"><a href="#cb55-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb55-19"><a href="#cb55-19" aria-hidden="true" tabindex="-1"></a>sdemt422 <span class="ot">&lt;-</span> <span class="fu">read_dta</span>(<span class="st">"data_t4/anterior/SDEMT422.dta"</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb55-20"><a href="#cb55-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(tipo<span class="sc">==</span><span class="dv">1</span>) <span class="sc">%&gt;%</span> <span class="co"># sólo cara cara</span></span>
+<span id="cb55-21"><a href="#cb55-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(r_def<span class="sc">==</span><span class="dv">0</span>) <span class="sc">%&gt;%</span> <span class="co"># sólo completa</span></span>
+<span id="cb55-22"><a href="#cb55-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span>c_res<span class="sc">==</span><span class="dv">2</span>) <span class="sc">%&gt;%</span> <span class="co">#no ausentes definitivos</span></span>
+<span id="cb55-23"><a href="#cb55-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(n_ent<span class="sc">==</span><span class="dv">3</span>)  <span class="sc">%&gt;%</span> </span>
+<span id="cb55-24"><a href="#cb55-24" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">trim=</span><span class="st">"t422"</span>) </span>
+<span id="cb55-25"><a href="#cb55-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb55-26"><a href="#cb55-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb55-27"><a href="#cb55-27" aria-hidden="true" tabindex="-1"></a>sdemt123 <span class="ot">&lt;-</span> <span class="fu">read_dta</span>(<span class="st">"data_t4/anterior/SDEMT123.dta"</span>)<span class="sc">%&gt;%</span> </span>
+<span id="cb55-28"><a href="#cb55-28" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(tipo<span class="sc">==</span><span class="dv">1</span>) <span class="sc">%&gt;%</span> <span class="co"># sólo cara cara</span></span>
+<span id="cb55-29"><a href="#cb55-29" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(r_def<span class="sc">==</span><span class="dv">0</span>) <span class="sc">%&gt;%</span> <span class="co"># sólo completa</span></span>
+<span id="cb55-30"><a href="#cb55-30" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span>c_res<span class="sc">==</span><span class="dv">2</span>) <span class="sc">%&gt;%</span>  <span class="co">#no ausentes definitivos</span></span>
+<span id="cb55-31"><a href="#cb55-31" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(n_ent<span class="sc">==</span><span class="dv">4</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb55-32"><a href="#cb55-32" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">trim=</span><span class="st">"t123"</span>) </span>
+<span id="cb55-33"><a href="#cb55-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb55-34"><a href="#cb55-34" aria-hidden="true" tabindex="-1"></a>sdemt223<span class="ot">&lt;-</span>sdemt223 <span class="sc">%&gt;%</span> </span>
+<span id="cb55-35"><a href="#cb55-35" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(tipo<span class="sc">==</span><span class="dv">1</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb55-36"><a href="#cb55-36" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(n_ent<span class="sc">==</span><span class="dv">5</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb55-37"><a href="#cb55-37" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">trim=</span><span class="st">"t223"</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Vamos a hacer el panel hoy</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb56"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a>panel<span class="ot">&lt;-</span> dplyr<span class="sc">::</span><span class="fu">bind_rows</span>(sdemt222, <span class="co"># había un conflicto en cs_p20*</span></span>
+<span id="cb56-2"><a href="#cb56-2" aria-hidden="true" tabindex="-1"></a>                         sdemt322, </span>
+<span id="cb56-3"><a href="#cb56-3" aria-hidden="true" tabindex="-1"></a>                         sdemt422, </span>
+<span id="cb56-4"><a href="#cb56-4" aria-hidden="true" tabindex="-1"></a>                         sdemt123,</span>
+<span id="cb56-5"><a href="#cb56-5" aria-hidden="true" tabindex="-1"></a>                         sdemt223)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: `..1$tcco` and `..2$tcco` have conflicting value labels.
+ℹ Labels for these values will be taken from `..1$tcco`.
+✖ Values: 2</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: `..1$tcco` and `..3$tcco` have conflicting value labels.
+ℹ Labels for these values will be taken from `..1$tcco`.
+✖ Values: 2</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: `..1$cd_a` and `..4$cd_a` have conflicting value labels.
+ℹ Labels for these values will be taken from `..1$cd_a`.
+✖ Values: 81, 82, 83, 84, 85, and 86</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: `..1$tcco` and `..4$tcco` have conflicting value labels.
+ℹ Labels for these values will be taken from `..1$tcco`.
+✖ Values: 2</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: `..1$tcco` and `..5$tcco` have conflicting value labels.
+ℹ Labels for these values will be taken from `..1$tcco`.
+✖ Values: 2</code></pre>
+</div>
+</div>
+<p>Los <em>warnigns</em> son solo de las etiquetas que son diferentes</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb62"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb62-1"><a href="#cb62-1" aria-hidden="true" tabindex="-1"></a>panel <span class="sc">%&gt;%</span> </span>
+<span id="cb62-2"><a href="#cb62-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">n_ent=</span><span class="fu">as_label</span>(n_ent)) <span class="sc">%&gt;%</span> </span>
+<span id="cb62-3"><a href="#cb62-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tabyl</span>(n_ent)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>              n_ent     n   percent
+ Primera entrevista 80588 0.2039748
+ Segunda entrevista 79861 0.2021347
+ Tercera entrevista 79046 0.2000719
+  Cuarta entrevista 77951 0.1973003
+  Quinta entrevista 77642 0.1965182</code></pre>
+</div>
+</div>
+<p>Vamos a revisar los <em>id</em></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb64"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb64-1"><a href="#cb64-1" aria-hidden="true" tabindex="-1"></a>panel <span class="sc">%&gt;%</span> </span>
+<span id="cb64-2"><a href="#cb64-2" aria-hidden="true" tabindex="-1"></a>  janitor<span class="sc">::</span><span class="fu">get_dupes</span>(cd_a, ent, con, v_sel, n_hog, h_mud, n_ren, n_ent)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>No duplicate combinations found of: cd_a, ent, con, v_sel, n_hog, h_mud, n_ren, n_ent</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 0 × 116
+# ℹ 116 variables: cd_a &lt;dbl+lbl&gt;, ent &lt;dbl+lbl&gt;, con &lt;dbl&gt;, v_sel &lt;dbl+lbl&gt;,
+#   n_hog &lt;dbl+lbl&gt;, h_mud &lt;dbl+lbl&gt;, n_ren &lt;dbl+lbl&gt;, n_ent &lt;dbl+lbl&gt;,
+#   dupe_count &lt;int&gt;, r_def &lt;dbl+lbl&gt;, loc &lt;dbl&gt;, mun &lt;dbl&gt;, est &lt;dbl&gt;,
+#   est_d_tri &lt;dbl&gt;, est_d_men &lt;dbl&gt;, ageb &lt;dbl&gt;, t_loc_tri &lt;dbl+lbl&gt;,
+#   t_loc_men &lt;dbl+lbl&gt;, upm &lt;dbl&gt;, d_sem &lt;dbl+lbl&gt;, n_pro_viv &lt;dbl&gt;,
+#   per &lt;dbl+lbl&gt;, c_res &lt;dbl+lbl&gt;, par_c &lt;dbl&gt;, sex &lt;dbl+lbl&gt;, eda &lt;dbl&gt;,
+#   nac_dia &lt;dbl+lbl&gt;, nac_mes &lt;dbl+lbl&gt;, nac_anio &lt;dbl&gt;, l_nac_c &lt;dbl+lbl&gt;, …</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb67"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb67-1"><a href="#cb67-1" aria-hidden="true" tabindex="-1"></a>panel <span class="sc">%&gt;%</span> </span>
+<span id="cb67-2"><a href="#cb67-2" aria-hidden="true" tabindex="-1"></a>  janitor<span class="sc">::</span><span class="fu">get_dupes</span>(cd_a, ent, con, v_sel, n_hog, h_mud, n_ren) <span class="sc">%&gt;%</span> </span>
+<span id="cb67-3"><a href="#cb67-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tabyl</span>(dupe_count)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> dupe_count      n    percent
+          2  15820 0.04118279
+          3  21696 0.05647926
+          4  37980 0.09886995
+          5 308645 0.80346800</code></pre>
+</div>
+</div>
+<p>Vamos a verificar con la edad si se trata de los mismos individuos</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb69"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb69-1"><a href="#cb69-1" aria-hidden="true" tabindex="-1"></a>panel<span class="ot">&lt;-</span>panel <span class="sc">%&gt;%</span> </span>
+<span id="cb69-2"><a href="#cb69-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">edad_min=</span><span class="fu">min</span>(eda), </span>
+<span id="cb69-3"><a href="#cb69-3" aria-hidden="true" tabindex="-1"></a>            <span class="at">edad_max=</span><span class="fu">max</span>(eda),</span>
+<span id="cb69-4"><a href="#cb69-4" aria-hidden="true" tabindex="-1"></a>            <span class="at">.by =</span> <span class="fu">c</span>(cd_a, ent, con, v_sel, n_hog, h_mud, n_ren)) <span class="sc">%&gt;%</span> </span>
+<span id="cb69-5"><a href="#cb69-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">diff_eda=</span>edad_max<span class="sc">-</span>edad_min)</span>
+<span id="cb69-6"><a href="#cb69-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb69-7"><a href="#cb69-7" aria-hidden="true" tabindex="-1"></a>panel <span class="sc">%&gt;%</span> </span>
+<span id="cb69-8"><a href="#cb69-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tabyl</span>(diff_eda)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> diff_eda      n    percent
+        0  39524 0.10003847
+        1 349991 0.88585581
+        2   5573 0.01410572</code></pre>
+</div>
+</div>
+<p>Vamos a hacer una variable que nos diga cuántas entrevista tiene cada individuo:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb71"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb71-1"><a href="#cb71-1" aria-hidden="true" tabindex="-1"></a>panel<span class="ot">&lt;-</span>panel <span class="sc">%&gt;%</span> </span>
+<span id="cb71-2"><a href="#cb71-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">total_n=</span><span class="fu">sum</span>(tipo),</span>
+<span id="cb71-3"><a href="#cb71-3" aria-hidden="true" tabindex="-1"></a>         <span class="at">.by =</span> <span class="fu">c</span>(cd_a, ent, con, v_sel, n_hog, h_mud, n_ren)) </span>
+<span id="cb71-4"><a href="#cb71-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb71-5"><a href="#cb71-5" aria-hidden="true" tabindex="-1"></a>panel<span class="ot">&lt;-</span>panel <span class="sc">%&gt;%</span> </span>
+<span id="cb71-6"><a href="#cb71-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(total_n<span class="sc">==</span><span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="de-long-a-wide" class="level3">
+<h3 class="anchored" data-anchor-id="de-long-a-wide">De long a wide</h3>
+<p>No vamos a trabajar con toda la base, sino con la variable clase 2</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb72"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb72-1"><a href="#cb72-1" aria-hidden="true" tabindex="-1"></a>panel_corto<span class="ot">&lt;-</span>panel <span class="sc">%&gt;%</span> </span>
+<span id="cb72-2"><a href="#cb72-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(cd_a, ent, con, v_sel, n_hog, h_mud, n_ren, n_ent, clase2) <span class="sc">%&gt;%</span> </span>
+<span id="cb72-3"><a href="#cb72-3" aria-hidden="true" tabindex="-1"></a>  tidyr<span class="sc">::</span><span class="fu">pivot_wider</span>(<span class="at">values_from =</span> clase2,</span>
+<span id="cb72-4"><a href="#cb72-4" aria-hidden="true" tabindex="-1"></a>                     <span class="at">names_from =</span> n_ent, </span>
+<span id="cb72-5"><a href="#cb72-5" aria-hidden="true" tabindex="-1"></a>                     <span class="at">names_prefix =</span> <span class="st">"clase2_"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb73"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb73-1"><a href="#cb73-1" aria-hidden="true" tabindex="-1"></a>panel_corto <span class="sc">%&gt;%</span> </span>
+<span id="cb73-2"><a href="#cb73-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(clase2_1<span class="sc">&gt;</span><span class="dv">0</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb73-3"><a href="#cb73-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate_at</span>(<span class="fu">vars</span>(<span class="fu">starts_with</span>(<span class="st">"clase2"</span>)), <span class="sc">~</span> <span class="fu">as_label</span>(.x)) <span class="sc">%&gt;%</span> </span>
+<span id="cb73-4"><a href="#cb73-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tabyl</span>(clase2_1, clase2_2, <span class="at">show_missing_levels =</span> F)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>             clase2_1 Población ocupada Población desocupada Disponibles
+    Población ocupada             24497                  429         609
+ Población desocupada               455                  155          70
+          Disponibles               880                  103         528
+       No disponibles              2167                  183        1655
+ No disponibles
+           2699
+            206
+           1903
+          14471</code></pre>
+</div>
+</div>
+<p>Para incluir más variables, debemos de considerar cuáles cambian en el tiempo:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb75"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb75-1"><a href="#cb75-1" aria-hidden="true" tabindex="-1"></a>panel_corto<span class="ot">&lt;-</span>panel <span class="sc">%&gt;%</span> </span>
+<span id="cb75-2"><a href="#cb75-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(cd_a, ent, con, v_sel, n_hog, h_mud, n_ren, n_ent, eda, clase2) <span class="sc">%&gt;%</span> </span>
+<span id="cb75-3"><a href="#cb75-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">clase2=</span><span class="fu">as_label</span>(clase2)) <span class="sc">%&gt;%</span> </span>
+<span id="cb75-4"><a href="#cb75-4" aria-hidden="true" tabindex="-1"></a>  tidyr<span class="sc">::</span><span class="fu">pivot_wider</span>(<span class="at">values_from =</span> <span class="fu">c</span>(clase2, eda),</span>
+<span id="cb75-5"><a href="#cb75-5" aria-hidden="true" tabindex="-1"></a>                     <span class="at">names_from =</span> n_ent, </span>
+<span id="cb75-6"><a href="#cb75-6" aria-hidden="true" tabindex="-1"></a>                     <span class="at">names_glue =</span> <span class="st">"{.value}_{n_ent}"</span>) <span class="co"># esto hace que la variables de -value vayan primero</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb76"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb76-1"><a href="#cb76-1" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(panel_corto)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] "cd_a"     "ent"      "con"      "v_sel"    "n_hog"    "h_mud"   
+ [7] "n_ren"    "clase2_1" "clase2_2" "clase2_3" "clase2_4" "clase2_5"
+[13] "eda_1"    "eda_2"    "eda_3"    "eda_4"    "eda_5"   </code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="algunas-cosas-para-pensar" class="level2">
+<h2 class="anchored" data-anchor-id="algunas-cosas-para-pensar">Algunas cosas para pensar</h2>
+<ul>
+<li><p>¿Qué pasa con los factores de expansión?</p></li>
+<li><p>¿Cómo calcularías cuál es porcentaje de atrición?</p></li>
+<li><p>¿Qué pasa con el COE que cambia en t1?</p></li>
+</ul>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">Sitio web del Proyecto PAPIME PE303423 Recursos didácticos para la enseñanza de la Sociodemografía</div>   
+    <div class="nav-footer-right">con apoyo DGAPA-UNAM</div>
+  </div>
+</footer>
+
+
+
+</body></html>

@@ -1,0 +1,399 @@
+---
+title: "T4: ENOE t223"
+---
+
+## Introducción
+
+Aquí dejo la presentación
+
+<iframe src="./04_ppt2023.pdf" title="Taller 4" width="600" height="400">
+
+</iframe>
+
+## Descarga el proyecto desde acá
+
+En esta liga puedes descarga el proyecto de trabajo. De esta manera no tendremos problemas con las rutas relativas.
+
+<https://tinyurl.com/demos-talleres>
+
+
+## Paquetes
+
+```{r}
+if (!require("pacman")) install.packages("pacman") # instala pacman si se requiere
+pacman::p_load(tidyverse,
+               haven,
+               sjlabelled,
+               pollster,
+               janitor) #carga los paquetes necesarios 
+```
+
+## Un mini repaso
+```{r}
+
+a <- 2
+
+b <- c("a", "b")
+
+c <- c(NA, T, F,2)
+
+NA==F
+
+sum(NA, T, F, 2)
+
+sum(c)
+
+sum(c, na.rm=T)
+
+```
+
+### Datos primera parte 
+
+Vamos a fusionar la ENOE, se ha descargado desde INEGI su versión .dta
+
+```{r}
+vivt223 <- haven::read_dta("data_t4/2023trim2_dta/VIVT223.dta") 
+hogt223 <- haven::read_dta("data_t4/2023trim2_dta/HOGT223.dta")
+sdemt223 <- haven::read_dta("data_t4/2023trim2_dta/SDEMT223.dta")
+coe1t223 <- haven::read_dta("data_t4/2023trim2_dta/COE1T223.dta")
+coe2t223 <- haven::read_dta("data_t4/2023trim2_dta/COE2T223.dta")
+
+```
+
+
+### Fusionado uno a uno de los COE
+
+Estas dos tablas sólo son para mayores de 12 años
+
+```{r}
+coet223 <- coe1t223 %>% 
+  dplyr::inner_join(coe2t223)
+
+```
+
+Hay tres opciones más de _join_
+
+```{r}
+help("mutate-joins")
+```
+
+### Fusionado de las otras tablas
+
+```{r}
+idviv <- c("tipo", "mes_cal", "cd_a", "ent", "con", "v_sel")
+idhog <- c(idviv, "n_hog", "h_mud")
+idsdem <- c(idhog, "n_ren" )
+
+```
+
+
+No queremos viviendas vacías
+
+```{r}
+enoe0<-vivt223 %>% 
+  dplyr::inner_join(hogt223, by=idviv)
+
+dim(enoe0)
+```
+
+Revisemos esta base
+
+```{r}
+names(enoe0)
+```
+
+```{r}
+enoe0 %>% 
+  count(fac_tri.x==fac_tri.y)
+```
+¿Por qué pasa esto?
+
+No hay hogares en esas viviendas, hay valores en la base x,   pero no en la base y
+```{r}
+enoe0 %>% 
+  dplyr::filter(!fac_tri.x==fac_tri.y) %>% 
+  janitor::tabyl(fac_tri.x, fac_tri.y)
+```
+
+Obviamente, vamos quedarnos con la información. 
+
+```{r}
+enoe0<-enoe0 %>% 
+  dplyr::select(-ends_with(".y")) %>% # quita las variables que terminan con .y
+  dplyr::rename_at(vars(ends_with(".x")), ~ stringr::str_remove(.x, ".x")) # renombra todas las variables que terminan en .x quitándoles el sufijo
+```
+
+
+Hoy pegaremos de manera similar a los individuos, pero primero nos vamos a quedar con quiénes tienen resultados definitivos de entrevistas completas
+
+```{r}
+
+enoe0 %>% 
+  count(as_label(r_def))
+
+
+sdemt223 %>% 
+  count(as_label(c_res))
+
+enoe0 <- enoe0 %>% 
+  filter(r_def==0) #entrevista completa
+
+sdemt223 <- sdemt223 %>% 
+  filter(r_def==0) %>% 
+  filter(!c_res==2) # residente que no es ausente
+```
+
+
+
+```{r}
+
+enoe1<-enoe0 %>% 
+  dplyr::left_join(sdemt223, by=idhog) %>% 
+  dplyr::select(-ends_with(".y")) %>% # quita las variables que terminan con .y
+  dplyr::rename_at(vars(ends_with(".x")), ~ stringr::str_remove(.x, ".x")) 
+  
+dim(enoe1)
+```
+
+
+Ya tenemos lista una base de individuos que podemos pegar con nuestra base de coe. Pero revisemos que este cuestionario tiene preguntas simulares a la cuestionario de otras tablas
+
+```{r}
+intersect(names(enoe1), names(coet223))
+```
+
+```{r}
+coet223<- coet223 %>% 
+  dplyr::rename_at(vars(p1, p3, p4_1, p4_2), ~ paste0(.x, "coe") )%>% 
+  dplyr::select(-ends_with(".y")) %>% # quita las variables que terminan con .y
+  dplyr::rename_at(vars(ends_with(".x")), ~ stringr::str_remove(.x, ".x")) 
+
+names(coet223)
+```
+
+
+Base final:
+```{r}
+enoet223 <- enoe1 %>% 
+  left_join(coet223)
+
+dim(enoet223)
+```
+
+Vamos a quitar algunos objetos para mejorar nuestro uso de memoria
+
+```{r}
+rm(vivt223, hogt223, coe1t223, coe2t223, coet223, enoe0, enoe1)
+gc()
+```
+
+
+
+## Algunos tabulados de la ENOE
+
+```{r}
+
+## Sin expansión
+enoet223 %>%
+  filter(eda>14 & eda<99) %>% 
+  mutate(clase1=as_label(clase1)) %>% 
+  janitor::tabyl(clase1)
+
+## Con expansión
+enoet223 %>%
+  filter(eda>14 & eda<99) %>% # este el filtro que usa inegi para sus tabulados
+  mutate(clase1=as_label(clase1)) %>% 
+  pollster::topline(clase1, weight = fac_tri)
+```
+Siempre checa que tus tabulados sean como los de INEGI de tu variable a estudiar
+
+![](ima/enoe1.png)
+
+
+
+
+De doble entrada
+```{r}
+
+## Sin expansión
+enoet223 %>%
+  filter(eda>14 & eda<99) %>% 
+  mutate(clase1=as_label(clase1)) %>% 
+  mutate(clase2=as_label(clase2)) %>% 
+  janitor::tabyl(clase1, clase2)
+
+## Con expansión
+enoet223 %>%
+  filter(eda>14 & eda<99) %>% # este el filtro que usa inegi para sus tabulados
+  mutate(clase1=as_label(clase1)) %>% 
+  mutate(clase2=as_label(clase2)) %>% 
+  pollster::crosstab(clase1, clase2, weight = fac_tri)
+```
+
+### Ingresos 
+
+Para los ingresos, INEGI publica los válidos, es decir los mayores a cero.
+
+```{r}
+enoet223 %>% 
+  filter(eda>14 & eda<99) %>% 
+  filter(ing_x_hrs>0) %>% # ojo
+  summarise(promedio=weighted.mean(ing_x_hrs, w = fac_tri))
+  
+  
+```
+
+
+## Segunda parte: panel rotativo
+
+El panel rotativo. Para hacer un ejemplo vamos a pegar únicamente el cuestionario sociodemográfico. Y sólo podemos pegar las entrevistas cara a cara
+
+
+
+### Datos segunta  parte 
+
+Vamos a trabajar con el panel que inicia el t222 y termina en t2 de 2023. Para que no sea tan pesado el ambiente aprovechamos y hacermos más filtros incluyendo el número de entrevista correspondiente.
+
+```{r}
+sdemt222 <- read_dta("data_t4/anterior/SDEMT222.dta") %>% 
+  filter(tipo==1) %>% # sólo cara cara
+  filter(r_def==0) %>% # sólo completa
+  filter(!c_res==2) %>%  #no ausentes definitivos
+  filter(n_ent==1) %>% 
+  mutate(trim="t222") %>% 
+  mutate_at(vars(cs_p20a_1, cs_p20a_c, 
+                 cs_p20b_1, cs_p20b_c,
+                 cs_p20c_1), ~ as.numeric(.x))
+
+sdemt322 <- read_dta("data_t4/anterior/SDEMT322.dta") %>% 
+  filter(tipo==1) %>% # sólo cara cara
+  filter(r_def==0) %>% # sólo completa
+  filter(!c_res==2) %>%  #no ausentes definitivos
+  filter(n_ent==2) %>% 
+  mutate(trim="t322") 
+
+
+sdemt422 <- read_dta("data_t4/anterior/SDEMT422.dta") %>% 
+  filter(tipo==1) %>% # sólo cara cara
+  filter(r_def==0) %>% # sólo completa
+  filter(!c_res==2) %>% #no ausentes definitivos
+  filter(n_ent==3)  %>% 
+  mutate(trim="t422") 
+
+
+sdemt123 <- read_dta("data_t4/anterior/SDEMT123.dta")%>% 
+  filter(tipo==1) %>% # sólo cara cara
+  filter(r_def==0) %>% # sólo completa
+  filter(!c_res==2) %>%  #no ausentes definitivos
+  filter(n_ent==4) %>% 
+  mutate(trim="t123") 
+
+sdemt223<-sdemt223 %>% 
+  filter(tipo==1) %>% 
+  filter(n_ent==5) %>% 
+  mutate(trim="t223") 
+```
+
+Vamos a hacer el panel hoy
+
+```{r}
+
+panel<- dplyr::bind_rows(sdemt222, # había un conflicto en cs_p20*
+                         sdemt322, 
+                         sdemt422, 
+                         sdemt123,
+                         sdemt223)
+```
+
+Los _warnigns_ son solo de las etiquetas que son diferentes
+
+```{r}
+panel %>% 
+  mutate(n_ent=as_label(n_ent)) %>% 
+  tabyl(n_ent)
+```
+
+
+Vamos a revisar los _id_
+```{r}
+
+panel %>% 
+  janitor::get_dupes(cd_a, ent, con, v_sel, n_hog, h_mud, n_ren, n_ent)
+
+panel %>% 
+  janitor::get_dupes(cd_a, ent, con, v_sel, n_hog, h_mud, n_ren) %>% 
+  tabyl(dupe_count)
+```
+
+Vamos a verificar con la edad si se trata de los mismos individuos
+
+```{r}
+
+panel<-panel %>% 
+  mutate(edad_min=min(eda), 
+            edad_max=max(eda),
+            .by = c(cd_a, ent, con, v_sel, n_hog, h_mud, n_ren)) %>% 
+  mutate(diff_eda=edad_max-edad_min)
+
+panel %>% 
+  tabyl(diff_eda)
+```
+
+
+Vamos a hacer una variable que nos diga cuántas entrevista tiene cada individuo:
+
+```{r}
+
+panel<-panel %>% 
+  mutate(total_n=sum(tipo),
+         .by = c(cd_a, ent, con, v_sel, n_hog, h_mud, n_ren)) 
+
+panel<-panel %>% 
+  filter(total_n==5)
+```
+
+
+### De long a wide
+
+
+No vamos a trabajar con toda la base, sino con la variable clase 2
+
+```{r}
+panel_corto<-panel %>% 
+  select(cd_a, ent, con, v_sel, n_hog, h_mud, n_ren, n_ent, clase2) %>% 
+  tidyr::pivot_wider(values_from = clase2,
+                     names_from = n_ent, 
+                     names_prefix = "clase2_")
+```
+
+
+```{r}
+
+panel_corto %>% 
+  filter(clase2_1>0) %>% 
+  mutate_at(vars(starts_with("clase2")), ~ as_label(.x)) %>% 
+  tabyl(clase2_1, clase2_2, show_missing_levels = F)
+```
+Para incluir más variables, debemos de considerar cuáles cambian en el tiempo:
+
+
+```{r}
+panel_corto<-panel %>% 
+  select(cd_a, ent, con, v_sel, n_hog, h_mud, n_ren, n_ent, eda, clase2) %>% 
+  mutate(clase2=as_label(clase2)) %>% 
+  tidyr::pivot_wider(values_from = c(clase2, eda),
+                     names_from = n_ent, 
+                     names_glue = "{.value}_{n_ent}") # esto hace que la variables de -value vayan primero
+```
+
+```{r}
+names(panel_corto)
+```
+
+## Algunas cosas para pensar 
+
+* ¿Qué pasa con los factores de expansión?
+
+* ¿Cómo calcularías cuál es porcentaje de atrición?
+
+* ¿Qué pasa con el COE que cambia en t1?
