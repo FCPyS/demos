@@ -23,7 +23,9 @@ website:
         file: cuestion.qmd 
       - text: "Recursos en línea"
         file: recursos.qmd
-
+      - text: "Conversatorio"
+        file: conv.qmd
+    
 
   sidebar:
     style: "floating"
