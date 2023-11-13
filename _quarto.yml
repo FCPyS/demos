@@ -36,8 +36,8 @@ website:
           - t2_endiseg2021.qmd
           - t3_endireh2021.qmd
           - t4_enoe223.qmd
-
-   
+          - t5_texto.qmd
+          
   page-footer: 
     left: "Sitio web del Proyecto PAPIME PE303423 Recursos didácticos para la enseñanza de la Sociodemografía"
     right: "con apoyo DGAPA-UNAM"
