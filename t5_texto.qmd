@@ -1,0 +1,585 @@
+---
+title: "T5: Análisis de texto (I)"
+---
+
+
+## Descarga el proyecto desde acá
+  
+ <https://tinyurl.com/demos-talleres>
+  
+En esta primera práctica veremos algunas acciones para importación de texto para su análisis, así como el manejo de diferentes fuentes, así como importación de tablas desde pdf.
+
+## Paquetes
+
+```{r}
+
+if (!require("pacman")) install.packages("pacman") # instala pacman si se requiere
+
+pacman::p_load(tidyverse, magrittr, tidytext,
+               tm, 
+               NLP, SnowballC, 
+               wordcloud, ggwordcloud,
+               quanteda, udpipe,
+               igraph, ggraph, # para unos gráficos
+               readxl, janitor, textrank,
+               broom, epubr, pdftools, tesseract, tokenizers)
+
+```
+
+## Importar desde un archivo .txt
+
+Vamos a importar el discurso que el presidente dio el 1 de julio de 2022: <https://lopezobrador.org.mx/2022/07/01/discurso-del-presidente-andres-manuel-lopez-obrador-en-4-ano-del-triunfo-democratico-historico/>
+
+```{r}
+amlo <- readLines("text/20220107_amlo.txt")
+
+```
+
+Revisemos un poco este objeto
+
+```{r}
+summary(amlo)
+```
+
+Tenemos 113 párrafos. Al momento no tenemos más información que lo revisaremos en siguientes secciones
+
+## Importar un epub
+
+El proyecto Gutenberg tiene una selección de libros publicados sin problemas de derechos de Autor. Trabajaremos con los *Cuentos de Amor de Locura y de Muerte* de Horacio Quiroga
+
+```{r}
+epubr::epub_head("text/quiroga.epub") # muestra lo primero 
+```
+
+Es una selección de cuentos. Revisemos un poco la meta-data:
+
+```{r}
+epubr::epub_meta("text/quiroga.epub") # muestra el meta-data del libro
+
+```
+
+Hoy sí lo vamos a importar en nuestro ambiente:
+
+```{r}
+x <- epubr::epub("text/quiroga.epub") # Importa todo el libro en el objeto x, pero no queremos todo
+x
+```
+
+¿Dónde están los cuentos?
+
+```{r}
+glimpse(x)
+```
+
+Vemos que en realidad la última variable es una lista que adentro trae un objeto "tbl_df" de 9 x 4. Revisemos qué hay
+
+```{r}
+class(x$data)
+
+x$data
+```
+
+Como es una lista, pero una lista de un solo elemento `[[1]]`, vamos a consultarlo:
+
+```{r}
+x$data[[1]]
+```
+
+Esta es nuestra matriz de datos. Aquí podemos elegir una sección. Por ejemplo un cuento
+
+```{r}
+epub<-x$data[[1]]
+class(epub)
+```
+
+Vamos a quedarnos con un solo cuento:
+
+```{r}
+ojos_sombrios <- epub %>% 
+  filter(section =="id00249") %>%  # nos quedamos con el primer cuento
+  select(text)
+
+ojos_sombrios
+
+class(ojos_sombrios)
+
+```
+
+Sigue teniendo formato de data.frame. Para poder usar algunos elementos necesitamos convertirlo a texto. Por eso lo vamos a "pegar"
+
+```{r}
+ojos_sombrios<-paste(ojos_sombrios$text) # lo volvemos caracter
+class(ojos_sombrios)
+
+
+```
+
+Con esto ya podremos hacer muchas operaciones de aquí en adelante.
+
+## Importar un pdf con`{pdftools}`
+
+```{r}
+dof4nov <- pdftools::pdf_text("text/04112022-MAT.pdf")
+dof4nov[6] 
+class(dof4nov)
+```
+
+Para verlo mejor podemos usar el comando `cat()` de base para cada una de las "hojas"
+
+```{r}
+cat(dof4nov[6])
+```
+
+
+
+
+## Importar una imagen con texto con `{tesseract}`
+
+El paquete `{tesseract}` ... 
+
+> "utiliza datos de entrenamiento para realizar OCR. La mayoría de los sistemas utilizan de forma predeterminada los datos de entrenamiento en inglés". Para mejorar el rendimiento de OCR para otros idiomas, puede instalar los datos de entrenamiento de su distribución... En Windows y MacOS, puede instalar idiomas mediante la función tesseract_download, que descarga datos de entrenamiento directamente desde github y los almacena en la ruta del disco..." (traducido de la viñeta)
+
+```{r}
+if(is.na(match("spa", tesseract::tesseract_info()$available)))
+  tesseract::tesseract_download("spa") # baja el entrenamiento para español
+
+spa <- tesseract::tesseract("spa") # aquí este será el "engine"
+
+text <- tesseract::ocr("text/texto1.png", #ruta donde está la imagen
+                       engine = spa) # que lo lea en español
+cat(text)
+
+```
+
+## `{stringr}` Limpieza de variables de cadena
+
+```{r}
+stringr::str_squish(text)
+```
+
+```{r}
+nota<-stringr::str_split_fixed(text, "\n\n", n=10) ## por párrafos
+nota
+```
+
+```{r}
+stringr::str_count(text, "\n\n")
+```
+
+```{r}
+nota<-stringr::str_split_fixed(text,
+                                 pattern="\n\n", 
+                                 n=str_count(text, "\n\n")+1) ## por párrafos
+nota
+```
+
+```{r}
+stringr::str_squish(nota)
+```
+
+Si queremos quitar lo "-", lo podemos hacer:
+
+```{r}
+nota<-stringr::str_squish(nota)
+
+stringr::str_remove_all(nota, 
+                        pattern="- ")
+
+```
+
+## Más operaciones con cadenas con `{stringr}` y `{tokenizers}`
+
+Ya vimos el conteo de algunos patrones y cómo podemos quitar algunos. Trabajemos con el cuento de Quiroga, que también está un poco sucio, y veamos como podemos seguir utilizando el formato tidy
+
+```{r}
+ojos_sombrios<-ojos_sombrios %>% 
+  stringr::str_split_fixed( pattern="\n\n", n=str_count(text, "\n\n")+1) %>% ## por párrafos %
+  stringr::str_squish()
+
+```
+
+Hay un personaje que se llama Nébel, veámos cuantas veces aparece:
+
+```{r}
+summary(ojos_sombrios)
+
+ojos_sombrios %>% 
+stringr::str_count(pattern="Vezzera") %>% 
+  sum()
+```
+
+Vamos a ver cuántas palabras tiene cada párrafos, hay unos párrafos vacíos:
+
+```{r}
+tokenizers::count_words(ojos_sombrios)
+```
+
+Revisemos el discurso de Amlo:
+
+```{r}
+tokenizers::count_words(amlo)
+
+```
+
+De los 113 párrafos tenemos varios que están en 0. Vamos a eliminarlos. Vemos que txt reconoció los párrafos sin problemas, sin necesidad de poner la marca de párrafo
+
+```{r}
+count<-tokenizers::count_words(amlo) 
+count==0
+
+amlo<-amlo[!count==0] 
+```
+
+Vamos a jugar más con algunas opciones de `{tokenizers}`
+
+```{r}
+tokenizers::count_words(amlo)
+tokenizers::count_sentences(amlo)
+```
+
+
+## Tokenización para análisis de texto
+
+Las palabras tienen un papel en el lenguaje, por lo cual muchas veces la unidad que usaremos será esa. Uno de los primeros pasos para el análisis de texto será descomponer nuestros textos en palabras. 
+
+### Tokenización con `{tidytext}`
+
+Para usar `{tidytext}`, necesitamos que nuestro texto esté en formato tibble:
+```{r}
+amlo_df <-tibble(text=amlo)
+```
+
+A partir de esto podemos pasar al proceso de tokenización:
+
+```{r}
+amlo_df %>%
+  unnest_tokens(word, text)
+```
+
+Podemos hacer un tabulado de estos elementos:
+
+```{r}
+amlo_df %>%
+  tidytext::unnest_tokens(word, text) %>% 
+  tabyl(word) %>% 
+  arrange(-n) %>% 
+  head(10)
+
+```
+Importa el tipo de palabra!!! En muchos idiomas las preposiciones y determinantes son bastante comunes. Hay varios diccionarios, incluso los podemos modificar. Para este ejercicio utilizaremos las palabras comunes del paquete `{quanteda}`
+
+```{r}
+quanteda::stopwords(language="spa")
+stop<-quanteda::stopwords(language="spa")
+```
+
+
+```{r}
+amlo_df %>%
+  tidytext::unnest_tokens(word, text) %>% 
+  filter(!word%in%stop) %>%  # ojo con el filtro
+  tabyl(word) %>% 
+  arrange(-n) %>% 
+  head(10)
+
+```
+
+### Tokenización con `{udpipe}`
+
+Para mayor información consultar
+<https://ufal.mff.cuni.cz/~straka/papers/2017-conll_udpipe.pdf>
+
+Primero vamos a bajar nuestro modelo en español
+```{r}
+udmodel <- udpipe_download_model(language = "spanish")  # esto trabaja con la estructura del español
+
+```
+
+Vamos a "tokenizar" el discurso de AMLO:
+
+```{r}
+amlo_udpipe<-udpipe(x =amlo, 
+                      object=udmodel) #"tokeniza" el texto
+
+
+```
+
+Además de separarnos las palabras, también distingue puntuación (por eso tiene más líneas que las palabras), pero también nos da las "Universal POS tags", donde POS=part-of-speech, que están en la variable "upos"
+
+```{r}
+amlo_udpipe %>% 
+  head(10)
+```
+
+¿Con cuales UPOS se trabaja? <https://universaldependencies.org/u/pos/>
+
+```{r}
+amlo_udpipe %>% 
+  tabyl(upos)
+```
+
+¿Qué no logró identificar?
+
+```{r}
+amlo_udpipe %>% 
+  filter(is.na(upos)) %>% 
+  tabyl(token)
+```
+
+La clasificación de las UPOS nos permite hacer filtro por el tipo de palabra que queremos analizar, seguro los sustantivos son los que más queremos revisar:
+
+
+```{r}
+amlo_udpipe %>% 
+  filter(upos=="NOUN") %>% 
+  tabyl(token) %>% 
+  arrange(-n) %>% 
+  head(10)
+```
+
+Además de los "tokens" podemos pedirles los "lemma", que como vemos quita el género y el número
+```{r}
+amlo_udpipe %>% 
+  filter(upos=="NOUN") %>% 
+  tabyl(lemma) %>% 
+  arrange(-n) %>% 
+  head(10)
+```
+
+
+
+## Estadísticas de las palabras
+
+Tenemos que una función en `{udpipe}` que se llama `txt_freq()`, es como un tabulado, pero nos da la frecuencia ordenada de mayor a m enor y los porcentajes relativos
+
+```{r}
+
+amlo_udpipe %>% 
+  filter(upos=="NOUN") %>% # nos vamos a quedar ahorita solo con los nombres
+  with(
+    txt_freq(token) # ojo hay que poner el with, porque no es formato tidy el comando
+    ) %>% 
+  head(10) # elegir número
+```
+
+Utilizando `{ggplot2}`, una vez que tenemos esta tabla, podemos hacer una gráfica
+
+```{r}
+
+amlo_udpipe %>% 
+  filter(upos=="NOUN") %>% # nos vamos a quedar ahorita solo con los nombres
+  with(
+    txt_freq(token) # ojo hay que poner el with, porque no es formato tidy el comando
+    ) %>% 
+  head(20) %>% # me voy a quedar con las primeras 20 palabras
+  ggplot()+
+  aes(x=key, 
+      y=freq) +
+  geom_bar(stat = "identity") + coord_flip()
+```
+
+Pero no está ordenado ....
+
+```{r}
+amlo_udpipe %>% 
+  filter(upos=="NOUN") %>% # nos vamos a quedar ahorita solo con los nombres
+  with(
+    txt_freq(token) # ojo hay que poner el with, porque no es formato tidy el comando
+    ) %>% 
+  head(20) %>% # me voy a quedar con las primeras 20 palabras
+  mutate(key = forcats::fct_reorder(key, freq)) %>% # aquí ordeno de acuerdo a las frecuencias
+  ggplot() + # aquí ya empieza el gráfico
+   aes(x=key, 
+      y=freq) +
+  geom_bar(stat = "identity", fill="blue", alpha=I(0.5)) + 
+  coord_flip() + theme_minimal() +
+  labs(x="Sustantivos", y="Frecuencia")
+```
+
+
+## Comparando tokens, palabras y más
+
+Para comparar mejor, descargamos otro discurso:
+
+
+```{r}
+
+amlo2 <- readLines("text/20220916_amlo.txt") 
+count2<-tokenizers::count_words(amlo2) 
+amlo2<-amlo2[!count2==0] 
+
+amlo2_udpipe<-udpipe(x =amlo2, 
+                      object=udmodel) #"tokeniza" el texto
+
+```
+
+
+Podemos revisar qué tanto se pueden comparar estos textos utilizando `{udpipe}`
+
+```{r}
+sustant1<-amlo_udpipe %>% filter(upos=="NOUN")
+sustant2<-amlo2_udpipe %>% filter(upos=="NOUN")
+
+comunes<-udpipe::txt_overlap(sustant1$lemma, # texto 1
+                    sustant1$lemma) # texto 2
+
+comunes %>% head(10)
+```
+
+Esta función nos da todas las palabras(o lemmas) comunes a ambos textos.
+
+
+## Nubes de palabras
+
+Otra forma muy común para presentar cuántas palabras hay y su frecuencia son las nubes de palabras
+
+Lo primero es que quizas sea más fácil tener un objeto con los conteos de palabras que encontramos usando txt_frq
+
+```{r}
+df_nube<-amlo_udpipe %>% 
+  filter(upos=="NOUN") %>% # nos vamos a quedar ahorita solo con los nombres
+  with(
+    txt_freq(token) # ojo hay que poner el with, porque no es formato tidy el comando
+    ) 
+
+```
+
+O si queremos usar todas las palabras independientemente de su función, podemos utilizar las palabras stop:
+
+```{r}
+
+df_nube2<-amlo_df %>% 
+  unnest_tokens(word,text) %>% 
+  filter(!word%in%stop) %>%  # ojo con el filtro
+  tabyl(word) 
+
+df_nube2 %>% head(10)
+
+```
+
+Ojo, aquí no se quitan algunos elementos como números. Esto es muy fácil utilizando {stringr}
+
+```{r}
+df_nube2 %<>% 
+  filter(stringr::str_detect(word, "[digits]"))
+
+
+df_nube2 %>% head(10)
+
+
+```
+
+Hoy será más fácil hacer nuestra nube
+
+### Nube con `{wordcloud}`
+
+```{r}
+
+set.seed(1234) # ojo es importante para que se vea siempre igual. Pero no es grave si no se pone
+
+wordcloud::wordcloud(words =df_nube$key, # columna donde se listan las palabras
+                     freq = df_nube$freq, # columna donde están las frecuencias
+                     min.freq = 5, # valor mínimo para incluirla
+                     max.words=200, #Máximo de palabras
+                     random.order=FALSE, #plot words in random order. If false, they will be plotted in decreasing frequency
+                     rot.per=0.35, # proportion words with 90 degree rotation
+                     colors=brewer.pal(8, "Dark2") # paleta de colores, aquí usamos uno de RColorBrewer
+                     )
+
+```
+
+### Nube con `{ggwordcloud}`
+
+Ya conocemos bastante el formato tidy, y sabemos de las ventajas de que nuestros gráficos sean ggplot
+
+Aquí las estéticas que tenemos son "label" = columna donde están están las palabraas
+
+    df_palabras %>% 
+      ggplot(
+        aes(label= variable donde están las palabras, 
+            size = variable donde está la frecuencia))+
+      geom_text_wordcloud # la geometría especial.
+
+```{r}
+df_nube %>% 
+  filter(freq>2) %>% # hacemos un filtro porque muchas no se ven bien
+  ggplot()+
+  aes(label=key,
+      size=freq) +
+  geom_text_wordcloud() +
+  theme_minimal()
+```
+
+```{r}
+df_nube %>% 
+  filter(freq>2) %>% # hacemos un filtro porque muchas no se ven bien
+  ggplot()+
+  aes(label=key,
+      size=freq) +
+  geom_text_wordcloud_area() +
+  theme_minimal()
+```
+
+Se ve igual... dice la ayuda
+
+> geom_text_wordcloud_area is an *alias* with a different set of default, that chooses a font size so that the area of the text is now related to the size aesthetic.
+
+No se ve tan divertida....
+
+Una de las cosas que hacía bonita a nuestra primera nube era el elemento aleatorio. Para ello vamos a necesitar saber cuántas filas tenemos
+
+```{r}
+df_nube %>% 
+  filter(freq>2) %>% 
+  dim()
+
+```
+
+```{r}
+
+set.seed(1234)
+
+df_nube %>% 
+  filter(freq>2) %>% # hacemos un filtro porque muchas no se ven bien
+  ggplot() +
+    aes(
+      label =key, 
+      size = freq,
+      color = factor(sample.int(10, 76, replace = TRUE)) # elegirá 10 colores aleatorios entre las 76 palabras
+      ) +
+  geom_text_wordcloud_area() +
+  scale_size_area(max_size = 8) +
+  theme_minimal()
+
+```
+
+Ya va agarrando... necesitamos los ángulos
+
+```{r}
+df_nube %<>%
+  mutate(angulo = 90 * sample(c(0, 1), n(), replace = TRUE, prob = c(60, 40)))
+
+
+```
+
+¿Qué hicimos? De manera aleatoria ponemos una variable que define los ángulos para cada una de las líneas de nuestra base
+
+```{r}
+
+set.seed(1234)
+
+df_nube %>% 
+  filter(freq>2) %>% # hacemos un filtro porque muchas no se ven bien
+  ggplot() +
+    aes(
+      label =key, 
+      size = freq,
+      color = factor(sample.int(10, 76, replace = TRUE)), # elegirá 10 colores aleatorios entre las 76 palabras
+      angle= angulo) +
+  geom_text_wordcloud(rm_outside = TRUE) +
+  #scale_size_area(max_size = 8) +
+  theme_minimal()
+
+```
+
+Es tu momento de brillar: haz una nube con el segundo discurso.
