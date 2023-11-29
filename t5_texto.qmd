@@ -2,11 +2,10 @@
 title: "T5: Análisis de texto (I)"
 ---
 
-
 ## Descarga el proyecto desde acá
-  
- <https://tinyurl.com/demos-talleres>
-  
+
+<https://tinyurl.com/demos-talleres>
+
 En esta primera práctica veremos algunas acciones para importación de texto para su análisis, así como el manejo de diferentes fuentes, así como importación de tablas desde pdf.
 
 ## Paquetes
@@ -22,7 +21,8 @@ pacman::p_load(tidyverse, magrittr, tidytext,
                quanteda, udpipe,
                igraph, ggraph, # para unos gráficos
                readxl, janitor, textrank,
-               broom, epubr, pdftools, tesseract, tokenizers)
+               broom, epubr, pdftools, tesseract, tokenizers,
+               rvest)
 
 ```
 
@@ -130,12 +130,9 @@ Para verlo mejor podemos usar el comando `cat()` de base para cada una de las "h
 cat(dof4nov[6])
 ```
 
-
-
-
 ## Importar una imagen con texto con `{tesseract}`
 
-El paquete `{tesseract}` ... 
+El paquete `{tesseract}` ...
 
 > "utiliza datos de entrenamiento para realizar OCR. La mayoría de los sistemas utilizan de forma predeterminada los datos de entrenamiento en inglés". Para mejorar el rendimiento de OCR para otros idiomas, puede instalar los datos de entrenamiento de su distribución... En Windows y MacOS, puede instalar idiomas mediante la función tesseract_download, que descarga datos de entrenamiento directamente desde github y los almacena en la ruta del disco..." (traducido de la viñeta)
 
@@ -237,14 +234,14 @@ tokenizers::count_words(amlo)
 tokenizers::count_sentences(amlo)
 ```
 
-
 ## Tokenización para análisis de texto
 
-Las palabras tienen un papel en el lenguaje, por lo cual muchas veces la unidad que usaremos será esa. Uno de los primeros pasos para el análisis de texto será descomponer nuestros textos en palabras. 
+Las palabras tienen un papel en el lenguaje, por lo cual muchas veces la unidad que usaremos será esa. Uno de los primeros pasos para el análisis de texto será descomponer nuestros textos en palabras.
 
 ### Tokenización con `{tidytext}`
 
 Para usar `{tidytext}`, necesitamos que nuestro texto esté en formato tibble:
+
 ```{r}
 amlo_df <-tibble(text=amlo)
 ```
@@ -266,13 +263,13 @@ amlo_df %>%
   head(10)
 
 ```
+
 Importa el tipo de palabra!!! En muchos idiomas las preposiciones y determinantes son bastante comunes. Hay varios diccionarios, incluso los podemos modificar. Para este ejercicio utilizaremos las palabras comunes del paquete `{quanteda}`
 
 ```{r}
 quanteda::stopwords(language="spa")
 stop<-quanteda::stopwords(language="spa")
 ```
-
 
 ```{r}
 amlo_df %>%
@@ -286,10 +283,10 @@ amlo_df %>%
 
 ### Tokenización con `{udpipe}`
 
-Para mayor información consultar
-<https://ufal.mff.cuni.cz/~straka/papers/2017-conll_udpipe.pdf>
+Para mayor información consultar <https://ufal.mff.cuni.cz/~straka/papers/2017-conll_udpipe.pdf>
 
 Primero vamos a bajar nuestro modelo en español
+
 ```{r}
 udmodel <- udpipe_download_model(language = "spanish")  # esto trabaja con la estructura del español
 
@@ -328,7 +325,6 @@ amlo_udpipe %>%
 
 La clasificación de las UPOS nos permite hacer filtro por el tipo de palabra que queremos analizar, seguro los sustantivos son los que más queremos revisar:
 
-
 ```{r}
 amlo_udpipe %>% 
   filter(upos=="NOUN") %>% 
@@ -338,6 +334,7 @@ amlo_udpipe %>%
 ```
 
 Además de los "tokens" podemos pedirles los "lemma", que como vemos quita el género y el número
+
 ```{r}
 amlo_udpipe %>% 
   filter(upos=="NOUN") %>% 
@@ -345,8 +342,6 @@ amlo_udpipe %>%
   arrange(-n) %>% 
   head(10)
 ```
-
-
 
 ## Estadísticas de las palabras
 
@@ -396,11 +391,9 @@ amlo_udpipe %>%
   labs(x="Sustantivos", y="Frecuencia")
 ```
 
-
 ## Comparando tokens, palabras y más
 
 Para comparar mejor, descargamos otro discurso:
-
 
 ```{r}
 
@@ -412,7 +405,6 @@ amlo2_udpipe<-udpipe(x =amlo2,
                       object=udmodel) #"tokeniza" el texto
 
 ```
-
 
 Podemos revisar qué tanto se pueden comparar estos textos utilizando `{udpipe}`
 
@@ -427,7 +419,6 @@ comunes %>% head(10)
 ```
 
 Esta función nos da todas las palabras(o lemmas) comunes a ambos textos.
-
 
 ## Nubes de palabras
 
@@ -494,11 +485,13 @@ Ya conocemos bastante el formato tidy, y sabemos de las ventajas de que nuestros
 
 Aquí las estéticas que tenemos son "label" = columna donde están están las palabraas
 
-    df_palabras %>% 
-      ggplot(
-        aes(label= variable donde están las palabras, 
-            size = variable donde está la frecuencia))+
-      geom_text_wordcloud # la geometría especial.
+```         
+df_palabras %>% 
+  ggplot(
+    aes(label= variable donde están las palabras, 
+        size = variable donde está la frecuencia))+
+  geom_text_wordcloud # la geometría especial.
+```
 
 ```{r}
 df_nube %>% 

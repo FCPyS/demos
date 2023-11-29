@@ -1,0 +1,379 @@
+---
+title: "T5: Análisis de texto (II)"
+---
+
+En esta segunda práctica veremos más análisis sobre los *tokens* y palabras.
+
+## Paquetes
+
+Instalamos este paquete que está en español:
+
+```{r}
+#remotes::install_github("agusnieto77/ACEP")
+
+```
+
+```{r}
+
+if (!require("pacman")) install.packages("pacman") # instala pacman si se requiere
+
+pacman::p_load(tidyverse, magrittr, tidytext,
+               tm, 
+               NLP, SnowballC, 
+               wordcloud, ggwordcloud,
+               quanteda, udpipe,
+               igraph, ggraph, # para unos gráficos
+               readxl, janitor, textrank,
+               broom, epubr, pdftools, tesseract, tokenizers,
+               ACEP, 
+               rvest)
+
+```
+
+En esta práctica empezaremos a avanzar en el análisis de texto, encontrando palabras claves, separando sujetos y acciiones y correlación entre palabras
+
+## Datos
+
+```{r}
+amlo1 <- readLines("text/20220107_amlo.txt") 
+count1<-tokenizers::count_words(amlo1) 
+amlo1<-amlo1[!count1==0] 
+
+amlo2 <- readLines("text/20220916_amlo.txt") 
+count2<-tokenizers::count_words(amlo2) 
+amlo2<-amlo2[!count2==0] 
+
+```
+
+Para `{tidytext}`
+
+```{r}
+amlo1_df <-tibble(text=amlo1)
+amlo2_df <-tibble(text=amlo2)
+
+stop<-quanteda::stopwords(language="spa")
+
+```
+
+Para `{udpipe}`, si no hemos descargado:
+
+```{r echo=FALSE }
+# # Delete file
+# file_name <- "spanish-gsd-ud-2.5-191206.udpipe"
+# 
+# if (file.exists(file_name)) {
+#  unlink(file_name)
+#  print("File is deleted..")
+# } else{
+#  print("File not exists..")
+# }
+```
+
+```{r}
+
+udmodel <- udpipe::udpipe_download_model(language = "spanish")  # esto trabaja con la estructura del español
+
+amlo1_udpipe <- udpipe::udpipe(x = amlo1, 
+                     object = udmodel) #"tokeniza" el texto
+
+
+amlo2_udpipe<-udpipe::udpipe(x = amlo2, 
+                    object = udmodel) #"tokeniza" el texto
+
+
+```
+
+## Asociación entre palabras
+
+### Con `{tidytext}`
+
+Vamos a primero a utilizar otras funciones de `{tidytext}`
+
+```{r}
+amlo_bigrams <- amlo1_df %>%
+  tidytext::unnest_tokens(bigram, text, token = "ngrams", n = 2) %>%
+  filter(!is.na(bigram))
+
+```
+
+Como vemos tenemos el problema de las "stop"
+
+```{r}
+
+bigrams_separado<- amlo_bigrams %>%
+  tidyr::separate(bigram, c("word1", "word2"), sep = " ")
+
+bigrams_filtrado <- bigrams_separado %>%
+  filter(!word1 %in% stop) %>%
+  filter(!word2 %in% stop)
+
+# new bigram counts:
+bigram_conteo <- bigrams_filtrado %>% 
+  count(word1, word2, sort = TRUE)
+
+bigram_conteo
+```
+
+```{r}
+
+bigram_conteo
+
+bigram_grafo<- bigram_conteo %>%
+  filter(n > 1) %>%
+  igraph::graph_from_data_frame()
+
+
+bigram_grafo
+```
+
+Esto ya nos permite hacer un poco análisis de redes:
+
+```{r}
+set.seed(2017)
+
+# ggraph::ggraph(bigram_grafo, layout = "fr") +
+#   geom_edge_link() +
+#   geom_node_point() +
+#   geom_node_text(aes(label = name), vjust = 1, hjust = 1)
+
+```
+
+```{r}
+
+# ggraph(bigram_grafo, layout = "fr") +
+  # geom_edge_link(aes(width = n, edge_alpha = n), edge_colour = "pink") +
+  # geom_node_text(aes(label = name), col = "darkgreen", size = 4) +
+  # theme_graph(base_family = "Arial Narrow") +
+  # theme(legend.position = "none") +
+  # labs(title = "Cooccurrencias")
+
+```
+
+### Con `{udpipe}`
+
+```{r}
+
+amlo_filtro<-amlo1_udpipe %>% 
+  filter(upos==c("NOUN", "ADJ")) # vamos a ver relaciones entre adjetivos y nombres
+
+cooc<-cooccurrence(x=amlo_filtro,
+                   term = "lemma", #checa que trabajaremos con los lemmas
+                   group = c("doc_id", "paragraph_id", "sentence_id"))
+
+```
+
+Vamos a hacer el gráfico parecido al anterior:
+
+```{r}
+cooc
+
+cooc_grafo<-igraph::graph_from_data_frame(cooc[cooc$cooc>1,])
+
+cooc_grafo
+```
+
+```{r}
+
+# ggraph(cooc_grafo, layout = "fr") +
+#   geom_edge_link(aes(width = cooc, edge_alpha = cooc, edge_colour = "pink")) +
+#   geom_node_text(aes(label = name), col = "darkgreen", size = 3) +
+#   theme_graph(base_family = "Arial Narrow") +
+#   theme(legend.position = "none") +
+#   labs(title = "Cooccurrencias dentro de una oración", subtitle = "Nombres y Adjetivos")
+
+```
+
+## Correlaciones
+
+Para hacer una correlación necesitamos un "Document Term Matrix", *dtm*. En diferentes paqauetes existen formas para convertir nuestros corpus en este formato. Vamos a utilizar las versiones de `{udpipe}`, pero una búsqueta en internet nos data que también existen otros paquetes.
+
+Vamos a crear identificadores únicos a nivel de "doc" y "sentence" y seguiremos haciendo el análisis con sustantivos y adjetivos:
+
+```{r}
+amlo1_udpipe$id <- udpipe::unique_identifier(amlo1_udpipe, fields = c("sentence_id", "doc_id"))
+
+dtm<-amlo1_udpipe %>% 
+  filter(upos %in% c("NOUN", "ADJ"))
+
+```
+
+Una vez que tenemos nuestro dataframe filtrado, vamos a convertilo en "document term matrix", primero calculando las frecuencias
+
+```{r}
+dtm <- udpipe::document_term_frequencies(dtm, document = "id", term = "lemma")
+dtm <- udpipe::document_term_matrix(dtm)
+dtm <- udpipe::dtm_remove_lowfreq(dtm, minfreq = 5)# que aparezcan al cinco veces
+
+termcorrelations <- udpipe::dtm_cor(dtm)
+termcorrelations # es una matriz muy grande. 
+```
+
+Vamos a ordenar esto. Porque quizás queremos solo los pares de términos y su correlación, parecido a lo que teníamos con las cooocurrencias anteriores
+
+```{r}
+y <- as_cooccurrence(termcorrelations)
+
+y %>% head(10)
+```
+
+Como vemos, se repite acción en el segundo término, y habrán pares iguales, como están en orden alfabético, podemos hacer:
+
+```{r}
+ y %<>%
+  filter(term1 < term2) %>% # se queda con los pares que aparezcan primero alfabéticamente, para que no se dupliquen
+  filter(abs(cooc) > 0.2) # las correlaciones que en su valor absoluto superen el 0.2
+
+```
+
+Vamos a ordenar, y revisemos los primeros
+
+```{r}
+y %<>% 
+ arrange(-(abs(cooc)))
+
+y %>% head(25)
+```
+
+## Modelos
+
+El algoritmo RAKE, que es el acrónimo de *R*apid *A*utomatic *K*eyword *E*xtraction. Este algoritmo busca palabras clave buscando una secuencia contigua de palabras que no contengan palabras irrelevantes. Es decir, al calcular una puntuación para cada palabra que forma parte de cualquier palabra clave candidata, esto se hace entre las palabras de las palabras clave candidatas, el algoritmo observa cuántas veces aparece cada palabra y cuántas veces se produce con otras palabras, cada palabra obtiene un puntaje que es la razón del grado de la palabra (cuántas veces se produce con otras palabras) a la frecuencia de la palabra. Se calcula un puntaje RAKE para la palabra clave candidata completa sumando los puntajes de cada una de las palabras que definen la palabra clave.
+
+Este es un ejemplo de cómo poder utilizar el modelo entrenado en español:
+
+```{r}
+rake<-keywords_rake(x =amlo1_udpipe,
+                    term = "lemma",
+                    group = "doc_id", 
+                    relevant = amlo1_udpipe$upos %in% c("NOUN", "ADJ"),
+                    ngram_max = 2,
+                    n_min = 2)
+
+rake %>% head(25)
+```
+
+## Sujeto, Verbo y Objeto (SVO)
+
+Utilizaremos el paquete en desarrollo argentino `{ACEP}` <https://github.com/agusnieto77/ACEP/> Esta basado en `{udpipe}` y tokeniza también nuestros textos
+
+```{r}
+texto_svo <- ACEP::acep_svo(amlo1)
+```
+
+```{r}
+texto_svo$acep_list_svo %>% head(10)
+texto_svo$acep_pro_svo %>% head(10)
+
+```
+
+Este paquete tiene algunos "atajos"
+
+```{r}
+amlo1_udpipe %>% 
+  filter(upos%in%c("NOUN","ADJ")) %>%
+  with(
+    ACEP::acep_token_plot(lemma,
+                          u = 25,
+                          frec = TRUE)
+  )
+```
+
+```{r}
+amlo1_udpipe %>% 
+  filter(upos%in%c("NOUN","ADJ")) %>%
+  with(
+    ACEP::acep_token_table(lemma,
+                          u = 25)
+  )
+```
+
+## "Raspado web"
+
+El paquete `{rvest}` es el paquete que nos permitirá tener acceso a la información que hay en una url. La extración de datos dependerá de qué tan bien organizada está nuesta url
+
+```{r}
+
+url <- "https://lopezobrador.org.mx/2022/07/01/discurso-del-presidente-andres-manuel-lopez-obrador-en-4-ano-del-triunfo-democratico-historico/"
+
+amlo_1jul22 <- rvest::read_html(url) 
+```
+
+Vamos a revisar este objeto
+
+```{r}
+amlo_1jul22
+class(amlo_1jul22)
+
+```
+
+```{r}
+amlo_1jul22 %>% 
+  rvest::html_element("p")
+```
+
+```{r}
+amlo_1jul22 %>% 
+  rvest::html_elements("p")
+```
+
+La p, proviene de la marca de párrafo, en el lenguaje html.
+
+
+Otros elementos que se pueden explorar:
+
+-   `<h1>, <h2>, ..., <h6> Encabezados (headings 1 a l 5)`
+-   `<p> Párrafos`
+-   `<ul> Unordered List - lista no ordenada`
+-   `<ol> Ordered List . lista ordenada`
+-   `<li> List Element - elemento de lista`
+-   `<div> Division / Section - secciones`
+-   `<table> Tables - tablas`
+-   `<form> Web forms - formularios web`
+-   `<a href> hipervinculos`
+
+
+Vamos a guardar los párrafos
+
+```{r}
+p<-amlo_1jul22 %>% 
+  html_elements("p") %>% 
+  html_text()
+
+p
+```
+
+```{r}
+amlo_1jul22 %>% 
+  html_elements("p") %>% 
+  html_text() %>% 
+  writeLines() # para verlo como marcas de párrafo
+
+```
+
+Hoy revisemos algun sitio que tenga tablas para poder extraer la información:
+
+```{r}
+url2<-"https://es.wikipedia.org/wiki/Demograf%C3%ADa_de_M%C3%A9xico"
+```
+
+Vamos a importarlo
+
+```{r}
+demos <- rvest::read_html(url2) 
+
+```
+
+Extraemos los elementos tipo "table":
+
+```{r}
+tabla<-demos%>% 
+  html_elements("table")
+
+tabla
+```
+
+Vamos a leer las tablas
+
+```{r}
+tabla[[4]] %>% 
+  html_table()
+```
