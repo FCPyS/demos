@@ -495,5 +495,19 @@
     "title": "Paquetes demogRáficos",
     "section": "",
     "text": "Aquí dejo la presentación\n\n\n\n\n\nEn esta liga puedes descarga el proyecto de trabajo. De esta manera no tendremos problemas con las rutas relativas.\nhttps://tinyurl.com/demos-talleres\nOrganiza tus archivos así:\ncarpeta_taller: - archivo sv1992.xlsx - archivo demos.Rproj - Charla.R\nEl código está acá"
+  },
+  {
+    "objectID": "paquetes.html#presentación",
+    "href": "paquetes.html#presentación",
+    "title": "Paquetes demogRáficos",
+    "section": "Presentación",
+    "text": "Presentación\nAquí dejo la presentación"
+  },
+  {
+    "objectID": "paquetes.html#descarga-el-proyecto-desde-acá",
+    "href": "paquetes.html#descarga-el-proyecto-desde-acá",
+    "title": "Paquetes demogRáficos",
+    "section": "Descarga el proyecto desde acá",
+    "text": "Descarga el proyecto desde acá\nEn esta liga puedes descarga el proyecto de trabajo. De esta manera no tendremos problemas con las rutas relativas.\nhttps://tinyurl.com/demos-talleres\nOrganiza tus archivos así:\ncarpeta_taller:\n\narchivo sv1992.xlsx\narchivo demos.Rproj\nCharla.R\n\nEl código está acá"
   }
 ]
