@@ -4,6 +4,7 @@ project:
 
 website:
   title: "DEMOS"
+  google-analytics: "G-5TFXHJT1JX"
   site-url: https://fcpys.github.io/demos/
   repo-url: https://github.com/FCPyS/demos
   repo-branch: main
@@ -23,8 +24,11 @@ website:
         file: conv.qmd
       - text: "Recursos en línea"
         file: recursos.qmd
+      - text: "Recursos bibliográficos"
+        file: biblio.qmd
     
-
+    
+    
   sidebar:
     style: "floating"
     search: true
@@ -38,6 +42,11 @@ website:
           - t4_enoe223.qmd
           - t5_texto.qmd
           - t5_texto2.qmd
+      - section: "Charla"
+        contents:
+          - paquetes.qmd
+
+
           
   page-footer: 
     left: "Sitio web del Proyecto PAPIME PE303423 Recursos didácticos para la enseñanza de la Sociodemografía"
