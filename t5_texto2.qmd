@@ -255,11 +255,11 @@ rake %>% head(25)
 
 Utilizaremos el paquete en desarrollo argentino `{ACEP}` <https://github.com/agusnieto77/ACEP/> Esta basado en `{udpipe}` y tokeniza también nuestros textos
 
-```{r}
+```{r eval=FALSE}
 texto_svo <- ACEP::acep_svo(amlo1)
 ```
 
-```{r}
+```{reval=FALSE}
 texto_svo$acep_list_svo %>% head(10)
 texto_svo$acep_pro_svo %>% head(10)
 
@@ -317,7 +317,6 @@ amlo_1jul22 %>%
 
 La p, proviene de la marca de párrafo, en el lenguaje html.
 
-
 Otros elementos que se pueden explorar:
 
 -   `<h1>, <h2>, ..., <h6> Encabezados (headings 1 a l 5)`
@@ -329,7 +328,6 @@ Otros elementos que se pueden explorar:
 -   `<table> Tables - tablas`
 -   `<form> Web forms - formularios web`
 -   `<a href> hipervinculos`
-
 
 Vamos a guardar los párrafos
 

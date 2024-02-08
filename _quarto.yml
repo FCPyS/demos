@@ -20,19 +20,21 @@ website:
         file: about.qmd 
       - text: "¿Quienes somos?"
         file: quienes.qmd 
+      - text: "Podcast"
+        file: podcast.qmd
       - text: "Conversatorio"
         file: conv.qmd
-      - text: "Recursos en línea"
-        file: recursos.qmd
-      - text: "Recursos bibliográficos"
-        file: biblio.qmd
     
-    
+  
     
   sidebar:
     style: "floating"
     search: true
     contents:
+      - section: "Recursos"
+        contents:
+          - recursos.qmd
+          - biblio.qmd
       - section: "Talleres"
         contents:
           - talleres.qmd

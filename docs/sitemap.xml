@@ -1,63 +1,67 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://fcpys.github.io/demos/about.html</loc>
-    <lastmod>2024-02-03T19:43:23.832Z</lastmod>
-  </url>
-  <url>
-    <loc>https://fcpys.github.io/demos/biblio.html</loc>
-    <lastmod>2024-02-03T19:43:24.232Z</lastmod>
-  </url>
-  <url>
-    <loc>https://fcpys.github.io/demos/conv.html</loc>
-    <lastmod>2024-02-03T19:43:24.594Z</lastmod>
-  </url>
-  <url>
-    <loc>https://fcpys.github.io/demos/cuestion.html</loc>
-    <lastmod>2024-02-03T19:43:24.965Z</lastmod>
-  </url>
-  <url>
-    <loc>https://fcpys.github.io/demos/index.html</loc>
-    <lastmod>2024-02-03T19:43:25.285Z</lastmod>
-  </url>
-  <url>
-    <loc>https://fcpys.github.io/demos/paquetes.html</loc>
-    <lastmod>2024-02-03T19:43:25.668Z</lastmod>
-  </url>
-  <url>
     <loc>https://fcpys.github.io/demos/quienes.html</loc>
-    <lastmod>2024-02-03T19:43:26.369Z</lastmod>
-  </url>
-  <url>
-    <loc>https://fcpys.github.io/demos/recursos.html</loc>
-    <lastmod>2024-02-03T19:43:26.709Z</lastmod>
-  </url>
-  <url>
-    <loc>https://fcpys.github.io/demos/t1_cacenso.html</loc>
-    <lastmod>2024-02-03T19:43:50.223Z</lastmod>
-  </url>
-  <url>
-    <loc>https://fcpys.github.io/demos/t2_endiseg2021.html</loc>
-    <lastmod>2024-02-03T19:49:31.385Z</lastmod>
-  </url>
-  <url>
-    <loc>https://fcpys.github.io/demos/t3_endireh2021.html</loc>
-    <lastmod>2024-02-03T19:50:33.396Z</lastmod>
+    <lastmod>2024-02-08T22:05:01.400Z</lastmod>
   </url>
   <url>
     <loc>https://fcpys.github.io/demos/t4_enoe223.html</loc>
-    <lastmod>2024-02-03T19:52:25.384Z</lastmod>
-  </url>
-  <url>
-    <loc>https://fcpys.github.io/demos/t5_texto.html</loc>
-    <lastmod>2024-02-03T19:53:18.359Z</lastmod>
+    <lastmod>2024-02-08T22:06:25.515Z</lastmod>
   </url>
   <url>
     <loc>https://fcpys.github.io/demos/t5_texto2.html</loc>
-    <lastmod>2024-02-03T19:53:39.066Z</lastmod>
+    <lastmod>2024-02-08T22:06:46.905Z</lastmod>
+  </url>
+  <url>
+    <loc>https://fcpys.github.io/demos/t5_texto.html</loc>
+    <lastmod>2024-02-08T22:07:16.931Z</lastmod>
+  </url>
+  <url>
+    <loc>https://fcpys.github.io/demos/conv.html</loc>
+    <lastmod>2024-02-08T22:07:17.282Z</lastmod>
+  </url>
+  <url>
+    <loc>https://fcpys.github.io/demos/paquetes.html</loc>
+    <lastmod>2024-02-08T22:07:17.675Z</lastmod>
+  </url>
+  <url>
+    <loc>https://fcpys.github.io/demos/podcast.html</loc>
+    <lastmod>2024-02-08T22:07:18.026Z</lastmod>
+  </url>
+  <url>
+    <loc>https://fcpys.github.io/demos/t2_endiseg2021.html</loc>
+    <lastmod>2024-02-08T22:11:04.378Z</lastmod>
+  </url>
+  <url>
+    <loc>https://fcpys.github.io/demos/t1_cacenso.html</loc>
+    <lastmod>2024-02-08T22:11:27.741Z</lastmod>
+  </url>
+  <url>
+    <loc>https://fcpys.github.io/demos/recursos.html</loc>
+    <lastmod>2024-02-08T22:11:28.108Z</lastmod>
+  </url>
+  <url>
+    <loc>https://fcpys.github.io/demos/index.html</loc>
+    <lastmod>2024-02-08T22:11:28.453Z</lastmod>
+  </url>
+  <url>
+    <loc>https://fcpys.github.io/demos/about.html</loc>
+    <lastmod>2024-02-08T22:11:28.832Z</lastmod>
   </url>
   <url>
     <loc>https://fcpys.github.io/demos/talleres.html</loc>
-    <lastmod>2024-02-03T19:53:39.475Z</lastmod>
+    <lastmod>2024-02-08T22:11:29.301Z</lastmod>
+  </url>
+  <url>
+    <loc>https://fcpys.github.io/demos/biblio.html</loc>
+    <lastmod>2024-02-08T22:11:29.885Z</lastmod>
+  </url>
+  <url>
+    <loc>https://fcpys.github.io/demos/t3_endireh2021.html</loc>
+    <lastmod>2024-02-08T22:12:11.506Z</lastmod>
+  </url>
+  <url>
+    <loc>https://fcpys.github.io/demos/cuestion.html</loc>
+    <lastmod>2024-02-08T22:12:11.877Z</lastmod>
   </url>
 </urlset>

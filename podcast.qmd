@@ -1,0 +1,23 @@
+---
+title: "Podcast"
+---
+
+## Suscríbete
+
+Tenemos 10 capítulos, *estrenamos los miércoles a las 20 horas (CDMX)*
+
+[Spotify](tinyurl.com/demos-podcast)
+[Amazon](https://music.amazon.com.mx/podcasts/e44029c3-5ccf-4e3d-9070-7c4a1cc819ec/demos)
+[YouTube](https://www.youtube.com/@DEMOSPAPIME)
+[Facebook](https://www.facebook.com/PE303423)
+
+## Episodio 1: Introducción al estudio de la población
+
+Invitado: Jorge Paz
+
+Escúchalo en Spotify
+
+```{=html}
+<iframe style="border-radius:12px" src="https://open.spotify.com/embed/episode/19JLyMaYWXXcC9zmGzvPaa?utm_source=generator" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+```
+

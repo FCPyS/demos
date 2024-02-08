@@ -1,0 +1,31 @@
+---
+title: "Paquetes demogRáficos"
+---
+
+![](/ima/charla.jpeg){fig-align="center"}
+
+## Presentación
+
+Aquí dejo la presentación
+
+<iframe src="./paquetes Demografía.pdf" title="Charla" width="600" height="400">
+
+</iframe>
+
+## Descarga el proyecto desde acá
+
+En esta liga puedes descarga el proyecto de trabajo. De esta manera no tendremos problemas con las rutas relativas.
+
+<https://tinyurl.com/demos-talleres>
+
+Organiza tus archivos así:
+
+carpeta_taller:
+
+-   archivo sv1992.xlsx
+
+-   archivo demos.Rproj
+
+-   Charla.R
+
+El código está [acá](demos/Charla.R)
