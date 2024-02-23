@@ -16,12 +16,11 @@ Invitado: Jorge Paz
 
 Ligas para comprar el libro: [Siglo XXI](https://sigloxxieditores.com.ar/libro/7500-millones-de-personas/) [Amazon](https://www.amazon.com.mx/%C2%A17500-millones-personas-demograf%C3%ADa-Ciencia-ebook/dp/B0821RQJNM/ref=sr_1_1?adgrpid=1168781542741325&hvadid=73049085138736&hvbmt=be&hvdev=c&hvlocphy=144476&hvnetw=o&hvqmt=e&hvtargid=kwd-73049332114584%3Aloc-119&hydadcr=24048_13576325&keywords=7500+millones+de+personas&qid=1707342093&sr=8-1)
 
-
 Conductores: Ana Escoto y Oscar Valdés
 
-Locutor: Miguel Cruz 
+Locutor: Miguel Cruz
 
-Invitado: Jorge Paz 
+Invitado: Jorge Paz
 
 Editor y Productor: Oscar Valdés
 
@@ -38,21 +37,21 @@ Invitada: Victoria Prieto
 
 ¿Qué es una etnoencuesta? ¿Cómo se puede usar a la big data desde la demografía? ¿Cuáles son los alcances y limitaciones de las nuevas fuentes de información digital? En este episodio la Doctora Victoria Prieto nos responderá a todas estas dudas y nos contará la experiencia que tuvo al trabajar con estas nuevas metodologías.
 
-A Victoria la pueden encontrar en **X.com** como: [@vicprieto10](https://x.com/vicprieto10) y al centro académico de la Universidad de la República del Uruguay como: [@ppoblacion_uy](https://x.com/PPoblacion_uy)
+A Victoria la pueden encontrar en **X.com** como: [\@vicprieto10](https://x.com/vicprieto10) y al centro académico de la Universidad de la República del Uruguay como: [\@ppoblacion_uy](https://x.com/PPoblacion_uy)
 
 También, no se olviden de visitar:
 
-- Sitio del [Observatorio de Movilidad, Infancia y Familia en la Universidad de la República de Uruguay](https://omif.cienciassociales.edu.uy/)
+-   Sitio del [Observatorio de Movilidad, Infancia y Familia en la Universidad de la República de Uruguay](https://omif.cienciassociales.edu.uy/)
 
-- Página del Proyecto sobre migración latinoamericana (LAMP). En donde pueden encontrar la etnoencuesta de Inmigración reciente en contextos de acogida latinoamericanos [LAMP-ENIR 2021 Chile / Colombia / Costa Rica](https://mmp-lamp.colmex.mx/)
+-   Página del Proyecto sobre migración latinoamericana (LAMP). En donde pueden encontrar la etnoencuesta de Inmigración reciente en contextos de acogida latinoamericanos [LAMP-ENIR 2021 Chile / Colombia / Costa Rica](https://mmp-lamp.colmex.mx/)
 
 Conductoras: Ana Escoto y Zyanya Puga
 
-Locutor: Miguel Cruz 
+Locutor: Miguel Cruz
 
-Invitada: Victoria Prieto 
+Invitada: Victoria Prieto
 
-Editor: Oscar Valdés 
+Editor: Oscar Valdés
 
 Productor: Diego Hernández
 
@@ -62,3 +61,29 @@ Escúchalo en Spotify
 <iframe style="border-radius:12px" src="https://open.spotify.com/embed/episode/5f17dBj8REEyo1ib0802px?utm_source=generator" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
 ```
 [Spotify](https://open.spotify.com/episode/5f17dBj8REEyo1ib0802px?si=b0fa56f423064786) [Amazon](https://music.amazon.com.mx/podcasts/e44029c3-5ccf-4e3d-9070-7c4a1cc819ec/episodes/f6f6b7d3-0052-433f-9141-2ea2e0bb31eb/demos-cap-2-nuevas-fuentes-de-informaci%C3%B3n) [YouTube](https://youtu.be/KMrrE7omjT0?si=xRbv3a3VAyUQvXTy) [Facebook](https://fb.watch/qd_5umBa8o/)
+
+## Episodio 3: Curso de vida y población
+
+¿Cómo se relaciona Spiderman con la demografía? ¿Cuál es el *turning point* o evento canónico de nuestra generación? ¿Qué es el curso de vida? En este episodio las doctoras Edith Pacheco y Nina Castro nos hablan sobre cómo es aplicar esta metodología en la demografía y cuáles son sus alcances.
+
+Si te interesó el análisis de secuencias checa estas ligas: 
+
+- [Curso Dra. Nina Castro](https://www.youtube.com/watch?v=rBPz2jFy7vE) 
+
+- [Material](https://sites.google.com/politicas.unam.mx/trabajo-pandemia/cursos-y-talleres/curso-taller-an%C3%A1lisis-de-secuencias?authuser=0)
+
+También, aquí está el enlace a las investigaciones de Edith Pacheco junto con Nathaly Llanes.
+- [Maternidad y trabajo no remunerado en el contexto del Covid-19](http://revistamexicanadesociologia.unam.mx/index.php/rms/article/view/60069)
+
+Conductoras y locutoras: Ana Escoto y Stephanie Alarcón
+
+Invitadas: Edith Pacheco y Nina Castro
+
+Editor y Productor: Oscar Valdés
+
+Escúchalo en Spotify:
+
+```{=html}
+<iframe style="border-radius:12px" src="https://open.spotify.com/embed/episode/3PH0O8UQwQ5qPONc63zZ0Y?utm_source=generator" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+```
+[Spotify](https://open.spotify.com/episode/3PH0O8UQwQ5qPONc63zZ0Y?si=iq7s4ewhRmCB9tphGnjvWw) [Amazon](https://music.amazon.com.mx/podcasts/e44029c3-5ccf-4e3d-9070-7c4a1cc819ec/episodes/d109ea91-2693-4c21-81ee-5d58e3fc83ea/demos-cap-3-curso-de-vida-y-poblaci%C3%B3n) [YouTube](https://youtu.be/xh-0AZMN3vY?si=PG3hN0Ex-vh94USv) y [Facebook](https://fb.watch/qngwk_EE17/)
