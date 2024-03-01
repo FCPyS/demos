@@ -10,7 +10,7 @@ Tenemos 10 capítulos, *estrenamos los miércoles a las 20 horas (CDMX)*
 
 ## Episodio 1: Introducción al estudio de la población
 
-Invitado: Jorge Paz
+**Invitado: Jorge Paz**
 
 ¿En verdad existe la sobrepoblación? ¿Cuántas personas vivimos en el planeta? ¿Es sostenible que la población crezca a largo plazo? En este episodio el Doctor Jorge Paz nos responderá a todas estas dudas y más. Además de que nos revelará algunos secretos sobre su libro "¡7500 millones de personas!: Qué es y para qué sirve la demografía”
 
@@ -33,7 +33,7 @@ Escúchalo en Spotify
 
 ## Episodio 2: Nuevas Fuentes de Información
 
-Invitada: Victoria Prieto
+**Invitada: Victoria Prieto**
 
 ¿Qué es una etnoencuesta? ¿Cómo se puede usar a la big data desde la demografía? ¿Cuáles son los alcances y limitaciones de las nuevas fuentes de información digital? En este episodio la Doctora Victoria Prieto nos responderá a todas estas dudas y nos contará la experiencia que tuvo al trabajar con estas nuevas metodologías.
 
@@ -64,16 +64,19 @@ Escúchalo en Spotify
 
 ## Episodio 3: Curso de vida y población
 
+**Invitadas: Edith Pacheco y Nina Castro**
+
 ¿Cómo se relaciona Spiderman con la demografía? ¿Cuál es el *turning point* o evento canónico de nuestra generación? ¿Qué es el curso de vida? En este episodio las doctoras Edith Pacheco y Nina Castro nos hablan sobre cómo es aplicar esta metodología en la demografía y cuáles son sus alcances.
 
-Si te interesó el análisis de secuencias checa estas ligas: 
+Si te interesó el análisis de secuencias checa estas ligas:
 
-- [Curso Dra. Nina Castro](https://www.youtube.com/watch?v=rBPz2jFy7vE) 
+-   [Curso Dra. Nina Castro](https://www.youtube.com/watch?v=rBPz2jFy7vE)
 
-- [Material](https://sites.google.com/politicas.unam.mx/trabajo-pandemia/cursos-y-talleres/curso-taller-an%C3%A1lisis-de-secuencias?authuser=0)
+-   [Material](https://sites.google.com/politicas.unam.mx/trabajo-pandemia/cursos-y-talleres/curso-taller-an%C3%A1lisis-de-secuencias?authuser=0)
 
-También, aquí está el enlace a las investigaciones de Edith Pacheco junto con Nathaly Llanes.
-- [Maternidad y trabajo no remunerado en el contexto del Covid-19](http://revistamexicanadesociologia.unam.mx/index.php/rms/article/view/60069)
+También, aquí está el enlace a las investigaciones de Edith Pacheco junto con Nathaly Llanes: 
+
+[Maternidad y trabajo no remunerado en el contexto del Covid-19](http://revistamexicanadesociologia.unam.mx/index.php/rms/article/view/60069)
 
 Conductoras y locutoras: Ana Escoto y Stephanie Alarcón
 
@@ -87,3 +90,27 @@ Escúchalo en Spotify:
 <iframe style="border-radius:12px" src="https://open.spotify.com/embed/episode/3PH0O8UQwQ5qPONc63zZ0Y?utm_source=generator" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
 ```
 [Spotify](https://open.spotify.com/episode/3PH0O8UQwQ5qPONc63zZ0Y?si=iq7s4ewhRmCB9tphGnjvWw) [Amazon](https://music.amazon.com.mx/podcasts/e44029c3-5ccf-4e3d-9070-7c4a1cc819ec/episodes/d109ea91-2693-4c21-81ee-5d58e3fc83ea/demos-cap-3-curso-de-vida-y-poblaci%C3%B3n) [YouTube](https://youtu.be/xh-0AZMN3vY?si=PG3hN0Ex-vh94USv) y [Facebook](https://fb.watch/qngwk_EE17/)
+
+## Episodio 4: Curso de vida, género y masculinidades
+
+**Invitado: Mario Martínez Salgado**
+
+¿Qué es lo que hace un hombre a un hombre? ¿Dejamos de crecer en la adultez? Todas estas cuestiones las abordaremos en la platica de este día con el doctor Mario Martínez Salgado, quien nos platicará sobre el género y las nuevas masculinidades y su relación con la demografía.
+
+Pueden seguir a Mario en **X.com** como [@MarioMtzSalgado](https://x.com/@MarioMtzSalgado) y también pueden visitar la página de la Escuela de Métodos que coordina [aquí](http://metodosmorelia.unam.mx/responsables.html)
+
+
+Conductores: Ana Escoto y Miguel Cruz 
+
+Invitado: Mario Martínez Salgado
+
+Locutor, Editor y Productor: Oscar Valdés 
+
+```{=html}
+<iframe style="border-radius:12px" src="https://open.spotify.com/embed/episode/3dr8tLJnt1H7waeXa8Dfsm?utm_source=generator" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+```
+
+[Spotify](https://open.spotify.com/episode/3dr8tLJnt1H7waeXa8Dfsm?si=91fd6c8e434c4bc7)
+[Amazon](https://music.amazon.com.mx/podcasts/e44029c3-5ccf-4e3d-9070-7c4a1cc819ec/episodes/19f07451-50ad-4f82-9485-df3623992907/demos-cap-4-curso-de-vida-g%C3%A9nero-y-masculinidades)
+[YouTube](https://www.youtube.com/watch?v=95zjFEw7_pk)
+[Facebook](https://fb.watch/qwp1FznKGY/)

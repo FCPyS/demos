@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.2.269">
+<meta name="generator" content="quarto-1.3.361">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -17,7 +17,7 @@ div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
   width: 0.8em;
-  margin: 0 0.8em 0.2em -1.6em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
 </style>
@@ -55,7 +55,8 @@ ul.task-list li input[type="checkbox"] {
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
     "search-detached-cancel-button-title": "Cancel",
-    "search-submit-button-title": "Submit"
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
   }
 }</script>
 <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-5TFXHJT1JX"></script>
@@ -83,41 +84,48 @@ gtag('config', 'G-5TFXHJT1JX', { 'anonymize_ip': true});
     <span class="navbar-title">DEMOS</span>
     </a>
   </div>
+            <div id="quarto-search" class="" title="Search"></div>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="./index.html">
+    <a class="nav-link" href="./index.html" rel="" target="">
  <span class="menu-text">Inicio</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./about.html">
+    <a class="nav-link" href="./about.html" rel="" target="">
  <span class="menu-text">Sobre el proyecto</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./quienes.html">
+    <a class="nav-link" href="./quienes.html" rel="" target="">
  <span class="menu-text">¿Quienes somos?</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="./podcast.html" aria-current="page">
+    <a class="nav-link active" href="./podcast.html" rel="" target="" aria-current="page">
  <span class="menu-text">Podcast</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./conv.html">
+    <a class="nav-link" href="./conv.html" rel="" target="">
  <span class="menu-text">Conversatorio</span></a>
   </li>  
 </ul>
-              <div id="quarto-search" class="" title="Search"></div>
+            <div class="quarto-navbar-tools ms-auto">
+</div>
           </div> <!-- /navcollapse -->
       </div> <!-- /container-fluid -->
     </nav>
-  <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
-    <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title">Podcast</h1>
-      <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
-        <i class="bi bi-chevron-right"></i>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Podcast</li></ol></nav>
+      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+      </a>
+      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
       </button>
     </div>
   </nav>
@@ -125,90 +133,103 @@ gtag('config', 'G-5TFXHJT1JX', { 'anonymize_ip': true});
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation floating overflow-auto">
-      <div class="mt-2 flex-shrink-0 align-items-center">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
+        <div class="mt-2 flex-shrink-0 align-items-center">
         <div class="sidebar-search">
         <div id="quarto-search" class="" title="Search"></div>
         </div>
-      </div>
+        </div>
     <div class="sidebar-menu-container"> 
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">Recursos</a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+ <span class="menu-text">Recursos</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./recursos.html" class="sidebar-item-text sidebar-link">Recursos en línea</a>
+  <a href="./recursos.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Recursos en línea</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./biblio.html" class="sidebar-item-text sidebar-link">Recursos bibliográficos</a>
+  <a href="./biblio.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Recursos bibliográficos</span></a>
   </div>
 </li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">Talleres</a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
+ <span class="menu-text">Talleres</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./talleres.html" class="sidebar-item-text sidebar-link">Talleres</a>
+  <a href="./talleres.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Talleres</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./t1_cacenso.html" class="sidebar-item-text sidebar-link">T1: Cuestionario Ampliado</a>
+  <a href="./t1_cacenso.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">T1: Cuestionario Ampliado</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./t2_endiseg2021.html" class="sidebar-item-text sidebar-link">T2: ENDISEG 2021</a>
+  <a href="./t2_endiseg2021.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">T2: ENDISEG 2021</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./t3_endireh2021.html" class="sidebar-item-text sidebar-link">T3: ENDIREH 2021</a>
+  <a href="./t3_endireh2021.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">T3: ENDIREH 2021</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./t4_enoe223.html" class="sidebar-item-text sidebar-link">T4: ENOE t223</a>
+  <a href="./t4_enoe223.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">T4: ENOE t223</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./t5_texto.html" class="sidebar-item-text sidebar-link">T5: Análisis de texto (I)</a>
+  <a href="./t5_texto.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">T5: Análisis de texto (I)</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./t5_texto2.html" class="sidebar-item-text sidebar-link">T5: Análisis de texto (II)</a>
+  <a href="./t5_texto2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">T5: Análisis de texto (II)</span></a>
   </div>
 </li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">Charla</a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
+ <span class="menu-text">Charla</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./paquetes.html" class="sidebar-item-text sidebar-link">Paquetes demogRáficos</a>
+  <a href="./paquetes.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Paquetes demogRáficos</span></a>
   </div>
 </li>
       </ul>
@@ -216,6 +237,7 @@ gtag('config', 'G-5TFXHJT1JX', { 'anonymize_ip': true});
     </ul>
     </div>
 </nav>
+<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
@@ -226,6 +248,7 @@ gtag('config', 'G-5TFXHJT1JX', { 'anonymize_ip': true});
   <li><a href="#episodio-1-introducción-al-estudio-de-la-población" id="toc-episodio-1-introducción-al-estudio-de-la-población" class="nav-link" data-scroll-target="#episodio-1-introducción-al-estudio-de-la-población">Episodio 1: Introducción al estudio de la población</a></li>
   <li><a href="#episodio-2-nuevas-fuentes-de-información" id="toc-episodio-2-nuevas-fuentes-de-información" class="nav-link" data-scroll-target="#episodio-2-nuevas-fuentes-de-información">Episodio 2: Nuevas Fuentes de Información</a></li>
   <li><a href="#episodio-3-curso-de-vida-y-población" id="toc-episodio-3-curso-de-vida-y-población" class="nav-link" data-scroll-target="#episodio-3-curso-de-vida-y-población">Episodio 3: Curso de vida y población</a></li>
+  <li><a href="#episodio-4-curso-de-vida-género-y-masculinidades" id="toc-episodio-4-curso-de-vida-género-y-masculinidades" class="nav-link" data-scroll-target="#episodio-4-curso-de-vida-género-y-masculinidades">Episodio 4: Curso de vida, género y masculinidades</a></li>
   </ul>
 <div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/FCPyS/demos/edit/main/podcast.qmd" class="toc-action">Edit this page</a></p><p><a href="https://github.com/FCPyS/demos/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
     </div>
@@ -234,7 +257,7 @@ gtag('config', 'G-5TFXHJT1JX', { 'anonymize_ip': true});
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title d-none d-lg-block">Podcast</h1>
+<h1 class="title">Podcast</h1>
 </div>
 
 
@@ -256,7 +279,7 @@ gtag('config', 'G-5TFXHJT1JX', { 'anonymize_ip': true});
 </section>
 <section id="episodio-1-introducción-al-estudio-de-la-población" class="level2">
 <h2 class="anchored" data-anchor-id="episodio-1-introducción-al-estudio-de-la-población">Episodio 1: Introducción al estudio de la población</h2>
-<p>Invitado: Jorge Paz</p>
+<p><strong>Invitado: Jorge Paz</strong></p>
 <p>¿En verdad existe la sobrepoblación? ¿Cuántas personas vivimos en el planeta? ¿Es sostenible que la población crezca a largo plazo? En este episodio el Doctor Jorge Paz nos responderá a todas estas dudas y más. Además de que nos revelará algunos secretos sobre su libro “¡7500 millones de personas!: Qué es y para qué sirve la demografía”</p>
 <p>Ligas para comprar el libro: <a href="https://sigloxxieditores.com.ar/libro/7500-millones-de-personas/">Siglo XXI</a> <a href="https://www.amazon.com.mx/%C2%A17500-millones-personas-demograf%C3%ADa-Ciencia-ebook/dp/B0821RQJNM/ref=sr_1_1?adgrpid=1168781542741325&amp;hvadid=73049085138736&amp;hvbmt=be&amp;hvdev=c&amp;hvlocphy=144476&amp;hvnetw=o&amp;hvqmt=e&amp;hvtargid=kwd-73049332114584%3Aloc-119&amp;hydadcr=24048_13576325&amp;keywords=7500+millones+de+personas&amp;qid=1707342093&amp;sr=8-1">Amazon</a></p>
 <p>Conductores: Ana Escoto y Oscar Valdés</p>
@@ -269,7 +292,7 @@ gtag('config', 'G-5TFXHJT1JX', { 'anonymize_ip': true});
 </section>
 <section id="episodio-2-nuevas-fuentes-de-información" class="level2">
 <h2 class="anchored" data-anchor-id="episodio-2-nuevas-fuentes-de-información">Episodio 2: Nuevas Fuentes de Información</h2>
-<p>Invitada: Victoria Prieto</p>
+<p><strong>Invitada: Victoria Prieto</strong></p>
 <p>¿Qué es una etnoencuesta? ¿Cómo se puede usar a la big data desde la demografía? ¿Cuáles son los alcances y limitaciones de las nuevas fuentes de información digital? En este episodio la Doctora Victoria Prieto nos responderá a todas estas dudas y nos contará la experiencia que tuvo al trabajar con estas nuevas metodologías.</p>
 <p>A Victoria la pueden encontrar en <strong>X.com</strong> como: <a href="https://x.com/vicprieto10">@vicprieto10</a> y al centro académico de la Universidad de la República del Uruguay como: <a href="https://x.com/PPoblacion_uy">@ppoblacion_uy</a></p>
 <p>También, no se olviden de visitar:</p>
@@ -288,19 +311,32 @@ gtag('config', 'G-5TFXHJT1JX', { 'anonymize_ip': true});
 </section>
 <section id="episodio-3-curso-de-vida-y-población" class="level2">
 <h2 class="anchored" data-anchor-id="episodio-3-curso-de-vida-y-población">Episodio 3: Curso de vida y población</h2>
+<p><strong>Invitadas: Edith Pacheco y Nina Castro</strong></p>
 <p>¿Cómo se relaciona Spiderman con la demografía? ¿Cuál es el <em>turning point</em> o evento canónico de nuestra generación? ¿Qué es el curso de vida? En este episodio las doctoras Edith Pacheco y Nina Castro nos hablan sobre cómo es aplicar esta metodología en la demografía y cuáles son sus alcances.</p>
 <p>Si te interesó el análisis de secuencias checa estas ligas:</p>
 <ul>
 <li><p><a href="https://www.youtube.com/watch?v=rBPz2jFy7vE">Curso Dra. Nina Castro</a></p></li>
 <li><p><a href="https://sites.google.com/politicas.unam.mx/trabajo-pandemia/cursos-y-talleres/curso-taller-an%C3%A1lisis-de-secuencias?authuser=0">Material</a></p></li>
 </ul>
-<p>También, aquí está el enlace a las investigaciones de Edith Pacheco junto con Nathaly Llanes. - <a href="http://revistamexicanadesociologia.unam.mx/index.php/rms/article/view/60069">Maternidad y trabajo no remunerado en el contexto del Covid-19</a></p>
+<p>También, aquí está el enlace a las investigaciones de Edith Pacheco junto con Nathaly Llanes:</p>
+<p><a href="http://revistamexicanadesociologia.unam.mx/index.php/rms/article/view/60069">Maternidad y trabajo no remunerado en el contexto del Covid-19</a></p>
 <p>Conductoras y locutoras: Ana Escoto y Stephanie Alarcón</p>
 <p>Invitadas: Edith Pacheco y Nina Castro</p>
 <p>Editor y Productor: Oscar Valdés</p>
 <p>Escúchalo en Spotify:</p>
 <iframe style="border-radius:12px" src="https://open.spotify.com/embed/episode/3PH0O8UQwQ5qPONc63zZ0Y?utm_source=generator" width="100%" height="352" frameborder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
 <p><a href="https://open.spotify.com/episode/3PH0O8UQwQ5qPONc63zZ0Y?si=iq7s4ewhRmCB9tphGnjvWw">Spotify</a> <a href="https://music.amazon.com.mx/podcasts/e44029c3-5ccf-4e3d-9070-7c4a1cc819ec/episodes/d109ea91-2693-4c21-81ee-5d58e3fc83ea/demos-cap-3-curso-de-vida-y-poblaci%C3%B3n">Amazon</a> <a href="https://youtu.be/xh-0AZMN3vY?si=PG3hN0Ex-vh94USv">YouTube</a> y <a href="https://fb.watch/qngwk_EE17/">Facebook</a></p>
+</section>
+<section id="episodio-4-curso-de-vida-género-y-masculinidades" class="level2">
+<h2 class="anchored" data-anchor-id="episodio-4-curso-de-vida-género-y-masculinidades">Episodio 4: Curso de vida, género y masculinidades</h2>
+<p><strong>Invitado: Mario Martínez Salgado</strong></p>
+<p>¿Qué es lo que hace un hombre a un hombre? ¿Dejamos de crecer en la adultez? Todas estas cuestiones las abordaremos en la platica de este día con el doctor Mario Martínez Salgado, quien nos platicará sobre el género y las nuevas masculinidades y su relación con la demografía.</p>
+<p>Pueden seguir a Mario en <strong>X.com</strong> como <a href="https://x.com/@MarioMtzSalgado"><span class="citation" data-cites="MarioMtzSalgado">@MarioMtzSalgado</span></a> y también pueden visitar la página de la Escuela de Métodos que coordina <a href="http://metodosmorelia.unam.mx/responsables.html">aquí</a></p>
+<p>Conductores: Ana Escoto y Miguel Cruz</p>
+<p>Invitado: Mario Martínez Salgado</p>
+<p>Locutor, Editor y Productor: Oscar Valdés</p>
+<iframe style="border-radius:12px" src="https://open.spotify.com/embed/episode/3dr8tLJnt1H7waeXa8Dfsm?utm_source=generator" width="100%" height="352" frameborder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+<p><a href="https://open.spotify.com/episode/3dr8tLJnt1H7waeXa8Dfsm?si=91fd6c8e434c4bc7">Spotify</a> <a href="https://music.amazon.com.mx/podcasts/e44029c3-5ccf-4e3d-9070-7c4a1cc819ec/episodes/19f07451-50ad-4f82-9485-df3623992907/demos-cap-4-curso-de-vida-g%C3%A9nero-y-masculinidades">Amazon</a> <a href="https://www.youtube.com/watch?v=95zjFEw7_pk">YouTube</a> <a href="https://fb.watch/qwp1FznKGY/">Facebook</a></p>
 
 
 </section>
@@ -333,9 +369,23 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     icon: icon
   };
   anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
   const clipboard = new window.ClipboardJS('.code-copy-button', {
-    target: function(trigger) {
-      return trigger.previousElementSibling;
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
     }
   });
   clipboard.on('success', function(e) {
@@ -400,6 +450,92 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       return note.innerHTML;
     });
   }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
   const findCites = (el) => {
     const parentEl = el.parentElement;
     if (parentEl) {
@@ -443,6 +579,9 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <footer class="footer">
   <div class="nav-footer">
     <div class="nav-footer-left">Sitio web del Proyecto PAPIME PE303423 Recursos didácticos para la enseñanza de la Sociodemografía</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    </div>
     <div class="nav-footer-right">con apoyo DGAPA-UNAM</div>
   </div>
 </footer>
