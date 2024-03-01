@@ -64,8 +64,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<script src="site_libs/cookie-consent/cookie-consent.js"></script>
-<link href="site_libs/cookie-consent/cookie-consent.css" rel="stylesheet">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -97,29 +95,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 }</script>
 <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-5TFXHJT1JX"></script>
 
-<script type="text/plain" cookie-consent="tracking">
+<script type="text/javascript">
 
 window.dataLayer = window.dataLayer || [];
 function gtag(){dataLayer.push(arguments);}
 gtag('js', new Date());
 gtag('config', 'G-5TFXHJT1JX', { 'anonymize_ip': true});
 </script>
-
-<script type="text/javascript" charset="UTF-8">
-document.addEventListener('DOMContentLoaded', function () {
-cookieconsent.run({
-  "notice_banner_type":"headline",
-  "consent_type":"express",
-  "palette":"dark",
-  "language":"en",
-  "page_load_consent_levels":["strictly-necessary"],
-  "notice_banner_reject_button_hide":false,
-  "preferences_center_close_button_hide":false,
-  "website_name":""
-  });
-});
-</script> 
-  
 
 
 <link rel="stylesheet" href="styles.css">
@@ -473,9 +455,9 @@ cookieconsent.run({
 <span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a>bigram_grafo</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>IGRAPH cf0bc32 DN-- 65 41 -- 
+<pre><code>IGRAPH e051c6e DN-- 65 41 -- 
 + attr: name (v/c), n (e/n)
-+ edges from cf0bc32 (vertex names):
++ edges from e051c6e (vertex names):
  [1] comisión     -&gt;federal    inversión    -&gt;extranjera
  [3] 500          -&gt;mil        desarrollo   -&gt;nacional  
  [5] inversión    -&gt;pública    mercado      -&gt;interno   
@@ -2125,9 +2107,9 @@ cookieconsent.run({
 <span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>cooc_grafo</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>IGRAPH debd0cd DN-- 91 104 -- 
+<pre><code>IGRAPH 0ae5946 DN-- 91 104 -- 
 + attr: name (v/c), cooc (e/n)
-+ edges from debd0cd (vertex names):
++ edges from 0ae5946 (vertex names):
  [1] inversión     -&gt;privado   inversión     -&gt;millón   
  [3] empleo        -&gt;estado    dólar         -&gt;inversión
  [5] extranjero    -&gt;inversión dólar         -&gt;millón   
@@ -3121,7 +3103,9 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <footer class="footer">
   <div class="nav-footer">
     <div class="nav-footer-left">Sitio web del Proyecto PAPIME PE303423 Recursos didácticos para la enseñanza de la Sociodemografía</div>   
-    <div class="nav-footer-center"><div class="cookie-consent-footer"><a href="#" id="open_preferences_center">Cookie Preferences</a></div></div>
+    <div class="nav-footer-center">
+      &nbsp;
+    </div>
     <div class="nav-footer-right">con apoyo DGAPA-UNAM</div>
   </div>
 </footer>

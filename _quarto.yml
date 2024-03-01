@@ -7,15 +7,12 @@ website:
   google-analytics:
       tracking-id: "G-5TFXHJT1JX"
       anonymize-ip: true
-  cookie-consent:
-    type: express
-    style: headline
-    palette: dark
   site-url: https://fcpys.github.io/demos/
   repo-url: https://github.com/FCPyS/demos
   reader-mode: true
   repo-branch: main
   repo-actions: [edit, issue]
+  back-to-top-navigation: true
   navbar:
     background: "#95391C"
     foreground: "#FFFCE4"
