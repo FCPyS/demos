@@ -4,9 +4,16 @@ project:
 
 website:
   title: "DEMOS"
-  google-analytics: "G-5TFXHJT1JX"
+  google-analytics:
+      tracking-id: "G-5TFXHJT1JX"
+      anonymize-ip: true
+  cookie-consent:
+    type: express
+    style: headline
+    palette: dark
   site-url: https://fcpys.github.io/demos/
   repo-url: https://github.com/FCPyS/demos
+  reader-mode: true
   repo-branch: main
   repo-actions: [edit, issue]
   navbar:
@@ -28,7 +35,8 @@ website:
   
     
   sidebar:
-    style: "floating"
+    fontcolor: "#95391C"
+    style: "docked"
     search: true
     contents:
       - section: "Recursos"
