@@ -12,7 +12,6 @@ website:
   reader-mode: true
   repo-branch: main
   repo-actions: [edit, issue]
-  back-to-top-navigation: true
   navbar:
     background: "#95391C"
     foreground: "#FFFCE4"
