@@ -208,24 +208,43 @@ Editor y Productor: Oscar Valdés
 ```
 [Spotify](https://open.spotify.com/episode/5haPuDYSXC3LBIwS4RbUXX?si=DICFi4hOSAqe0dXUACHa3Q) [Amazon](https://music.amazon.com.mx/podcasts/e44029c3-5ccf-4e3d-9070-7c4a1cc819ec/episodes/5b209fb7-d4c6-4bdd-9422-794ac3c02337/demos-cap8-poblaci%C3%B3n-y-diversidad-sexual) [YouTube](https://www.youtube.com/watch?v=BvBrKwHPAOA) [Facebook](https://fb.watch/rdPSZCJuPK/)
 
-
 ## Episodio 9: Proyecciones de población
 
 **Invitado: Victor García Guerrero**
 
-¿Qué son las proyecciones en la demografía? ¿Para qué sirven? ¿Qué nos aseguran y cada cuánto se tienen que ajustar? En este capítulo el **doctor Víctor García Guerrero** nos dará un adelanto al futuro, pues nos platicará sobre las proyecciones qué se han hecho sobre México y cómo es que les podemos dar un buen uso a estas. 
+¿Qué son las proyecciones en la demografía? ¿Para qué sirven? ¿Qué nos aseguran y cada cuánto se tienen que ajustar? En este capítulo el **doctor Víctor García Guerrero** nos dará un adelanto al futuro, pues nos platicará sobre las proyecciones qué se han hecho sobre México y cómo es que les podemos dar un buen uso a estas.
 
 Te dejamos un enlace para qué veas las proyecciones del país [aquí](https://www.gob.mx/conapo/acciones-y-programas/conciliacion-demografica-de-1950-a-2019-y-proyecciones-de-la-poblacion-de-mexico-y-de-las-entidades-federativas-2020-a-2070)
 
-También puedes seguir a Víctor en X.com en el usuario [@vicmgg](https://x.com/vicmgg) y a su grupo de investigación del Colegio de México en [@DDemogColmex](https://twitter.com/@DDemogColmex) 
+También puedes seguir a Víctor en X.com en el usuario [\@vicmgg](https://x.com/vicmgg) y a su grupo de investigación del Colegio de México en [\@DDemogColmex](https://twitter.com/@DDemogColmex)
 
 Locutora: Zyanya Puga
 
 Conductoras Ana Escoto y Stephanie Alarcón
 
-Editor y Productor: Oscar Valdés 
+Editor y Productor: Oscar Valdés
 
 ```{=html}
 <iframe style="border-radius:12px" src="https://open.spotify.com/embed/episode/4pF77bpiW55oqqGFrZh8lS?utm_source=generator" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
 ```
 [Spotify](https://open.spotify.com/episode/4pF77bpiW55oqqGFrZh8lS?si=4b6b863a7c074dc2) [Amazon](https://music.amazon.com.mx/podcasts/e44029c3-5ccf-4e3d-9070-7c4a1cc819ec/episodes/6d34456a-9647-436b-bf0e-0cbb90a86307/demos-cap-9-proyecciones-de-poblaci%C3%B3n) [YouTube](https://youtu.be/zEZNzRa6znQ?si=epnOux_iAiPCsato) [Facebook](https://fb.watch/rnO40GcuDS/)
+
+
+## Episodio 10: Población interseccionalidades y salud
+
+**Invitado: Abraham Granados**
+
+¿En qué se relaciona la salud con la demografía? ¿Qué poblaciones no tienen acceso a la misma y por qué? Y, ¿Qué se tiene que hacer en México en materia de salud? En este último capítulo de la temporada, el **doctor Abraham Granados nos** responderá todas estas dudas, además de que nos adelantará un poco sobre el siguiente libro que se encuentra coordinando.
+
+Te dejamos la liga del libro [Inequidades socioeconómicas y de la salud: análisis desde la  interseccionalidad](https://libros.iiec.unam.mx/sites/libros.iiec.unam.mx/files/2022-10/Inequidades_Berenice_Abraham.pdf)
+
+
+Conductoras Ana Escoto y Ana Linares
+
+Editor y Productor: Oscar Valdés 
+
+
+```{=html}
+<iframe style="border-radius:12px" src="https://open.spotify.com/embed/episode/0coNME9ek5c0smGn2raajJ?utm_source=generator" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+```
+[Spotify](https://open.spotify.com/episode/0coNME9ek5c0smGn2raajJ?si=9cc01b28accf4cc9) [Amazon](https://music.amazon.com.mx/podcasts/e44029c3-5ccf-4e3d-9070-7c4a1cc819ec/episodes/98cb1257-b4b2-4b55-b361-ca7e7a235073/demos-cap10-poblaci%C3%B3n-interseccionalidades-y-salud) [YouTube](https://youtu.be/j8gxVOG1agg?si=-tb2Knl1hQEurZ4L) [Facebook](https://fb.watch/rwiW3ctBp9/)
